@@ -1,8 +1,8 @@
 #ifndef FDF_H
 # define FDF_H
 
-# define MAX_X 255
-# define MAX_Y 255
+# define MAX_X 200
+# define MAX_Y 200
 
 # include <mlx.h>
 # include <unistd.h>
@@ -28,7 +28,25 @@ typedef struct	s_fdf
 	int			aff_c;
 }				t_fdf;
 
+typedef	struct	s_trace
+{
+	int			x1;
+	int			x2;
+	int			y1;
+	int			y2;
+	int			dx;
+	int			dy;
+	int			c1;
+	int			c2;
+}				t_trace;
+
 t_fdf			***fdf_proj_iso(t_fdf ***map, int c1, int c2);
 t_fdf			***fdf_proj_paral(t_fdf ***map, int cst);
+void			ft_trace_segm(t_fdf p1, t_fdf p2, t_env *env);
+void			trace_0(t_trace t, t_env *env);
+void			trace_1(t_trace t, int e, t_env *env);
+void			trace_2(t_trace t, int e, t_env *env);
+void			trace_3(t_trace t, int e, t_env *env);
+void			trace_4(t_trace t, int e, t_env *env);
 
 #endif

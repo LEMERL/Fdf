@@ -9,27 +9,55 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <mlx.h>
-#include <unistd.h>
-#include <stdlib.h>
-#include <stdio.h>
-#include <string.h>
-#include <math.h>
+#include "fdf.h"
 
-#define MAX_X 255
-#define MAX_Y 255
-
-typedef struct	s_env
+int	draw(t_env *e)
 {
-	void *mlx;
-	void *win;
-}				t_env;
-
-int	draw(t_env *e, t_map *map)
-{
-	t_aff	*aff;
-
-	aff = (map);
+	t_fdf	a;
+	t_fdf	b;
+	int		m;
+a.color = 0x000000;
+b.color = 0xFFFFFF;
+	m = 0;
+	while (m < 200)
+	{
+		a.aff_x = m;
+		a.aff_y = 195;
+		b.aff_x = 100;
+		b.aff_y = 100;
+		ft_trace_segm(a, b, e);
+		m = m + 20;
+	}
+	m = 0;
+	while (m < 200)
+	{
+		a.aff_x = 195;
+		a.aff_y = m;
+		b.aff_x = 100;
+		b.aff_y = 100;
+		ft_trace_segm(a, b, e);
+		m = m + 20;
+	}
+	m = 0;
+	while (m < 200)
+	{
+		a.aff_x = m;
+		a.aff_y = 5;
+		b.aff_x = 100;
+		b.aff_y = 100;
+		ft_trace_segm(a, b, e);
+		m = m + 20;
+	}
+	m = 0;
+	while (m < 200)
+	{
+		a.aff_x = 5;
+		a.aff_y = m;
+		b.aff_x = 100;
+		b.aff_y = 100;
+		ft_trace_segm(a, b, e);
+		m = m + 20;
+	}
 	return (0);
 }
 
@@ -49,22 +77,19 @@ int	mouse_hook(int button, int x, int y, t_env *e)
 	return (0);
 }
 
-int	expose_hook(t_env *e, t_map ***map)
+int	expose_hook(t_env *e, t_fdf ***map)
 {
-	t_aff ***aff;
-
-		aff = fdf_proj_iso_struct(map)
-		draw(e, );
+	(void)map;
+	draw(e);
 	return (0);
 }
 
 int	main(void)
 {
 	t_env	e;
-	t_map	***map;
+//	t_fdf	***map;
 
-	map = ft_get_map(/**/);
-
+//	map = ft_get_fdf(/**/);
 	e.mlx = mlx_init();
 	e.win = mlx_new_window(e.mlx, MAX_X, MAX_Y, "first_test");
 	mlx_key_hook(e.win, key_hook, &e);
