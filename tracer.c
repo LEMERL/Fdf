@@ -1,10 +1,27 @@
 #include "fdf.h"
 
-int		ft_col(t_trace, t_fdf )
+typedef struct	s_color
 {
+	int			red;
+	int			green;
+	int			blue;
+}				t_color;
+
+int		ft_col(t_trace t)
+{
+	t_color	c1;
+	t_color	c2;
 	int		color;
 
-	c1 -> c2;
+	c1.red = t.c1 / (256 * 256);
+	c1.green = (t.c1 / 256) % 256;
+	c1.blue = t.c1 % (256 * 256);
+	c2.red = t.c1 / (256 * 256);
+	c2.green = (t.c2 / 256) % 256;
+	c2.blue = t.c2 % (256 * 256);
+	color = ((c1.red + c2.red) * 128 * 256);
+	color = color + (c1.green + c2.green) * 128;
+	color = color + (c1.blue + c2.blue) / 2;
 	return (color);
 }
 
@@ -15,6 +32,11 @@ void	ft_trace_segm(t_fdf p1, t_fdf p2, t_env *env)
 
 	t.dx = (p2.aff_x - p1.aff_x) * 2;
 	t.dy = (p2.aff_y - p1.aff_y) * 2;
+	t.progression = (t.dx) / 2;
+	if (t.dx < 0)
+		t.progression = (t.dy / 2);
+	if (t.progression < 0)
+		t.progression *= -1;
 	t.x1 = p1.aff_x;
 	t.x2 = p2.aff_x;
 	t.y1 = p1.aff_y;
@@ -24,7 +46,7 @@ void	ft_trace_segm(t_fdf p1, t_fdf p2, t_env *env)
 	e = 0;
 	if (t.dx > 0 && t.dy > 0)
 		trace_1(t, e, env);
-	else if (t.dx > 0 && t.dy < 0)//(t.dy < 0 et t.dx > 0) ==> 4* quadrant
+	else if (t.dx > 0 && t.dy < 0)
 		trace_4(t, e, env);
 	else if (t.dx < 0 && t.dy > 0)
 		trace_2(t, e, env);
@@ -32,7 +54,7 @@ void	ft_trace_segm(t_fdf p1, t_fdf p2, t_env *env)
 		trace_3(t, e, env);
 	else if (t.dx == 0 || t.dy == 0)
 		trace_0(t, env);
-	mlx_pixel_put(env->mlx, env->win, t.x2, t.y2, ft_col(t));
+	mlx_pixel_put(env->mlx, env->win, t.x2, t.y2, t.c2);
 }
 
 void	trace_1(t_trace t, int e, t_env *env)

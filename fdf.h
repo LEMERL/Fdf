@@ -38,6 +38,8 @@ typedef	struct	s_trace
 	int			dy;
 	int			c1;
 	int			c2;
+	int			progression;
+	int			total;
 }				t_trace;
 
 t_fdf			***fdf_proj_iso(t_fdf ***map, int c1, int c2);
