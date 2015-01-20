@@ -1,8 +1,8 @@
 #ifndef FDF_H
 # define FDF_H
 
-# define MAX_X 200
-# define MAX_Y 200
+# define MAX_X 500
+# define MAX_Y 500
 
 # include <mlx.h>
 # include <unistd.h>
@@ -38,8 +38,7 @@ typedef	struct	s_trace
 	int			dy;
 	int			c1;
 	int			c2;
-	int			progression;
-	int			total;
+	int		ref_prog;
 }				t_trace;
 
 t_fdf			***fdf_proj_iso(t_fdf ***map, int c1, int c2);

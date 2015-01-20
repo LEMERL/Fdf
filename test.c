@@ -16,45 +16,52 @@ int	draw(t_env *e)
 	t_fdf	a;
 	t_fdf	b;
 	int		m;
-a.color = 0x000000;
-b.color = 0xFFFFFF;
+
 	m = 0;
-	while (m < 200)
+a.color = 0x000000;
+b.color = 0x0000FF;
+	while (m < 500)
 	{
 		a.aff_x = m;
-		a.aff_y = 195;
-		b.aff_x = 100;
-		b.aff_y = 100;
+		a.aff_y = 495;
+		b.aff_x = 250;
+		b.aff_y = 250;
 		ft_trace_segm(a, b, e);
 		m = m + 20;
 	}
 	m = 0;
-	while (m < 200)
+a.color = 0x000000;
+b.color = 0x00FF00;
+	while (m < 500)
 	{
-		a.aff_x = 195;
+		a.aff_x = 495;
 		a.aff_y = m;
-		b.aff_x = 100;
-		b.aff_y = 100;
+		b.aff_x = 250;
+		b.aff_y = 250;
 		ft_trace_segm(a, b, e);
 		m = m + 20;
 	}
 	m = 0;
-	while (m < 200)
+a.color = 0x000000;
+b.color = 0xFF0000;
+	while (m < 500)
 	{
 		a.aff_x = m;
 		a.aff_y = 5;
-		b.aff_x = 100;
-		b.aff_y = 100;
+		b.aff_x = 250;
+		b.aff_y = 250;
 		ft_trace_segm(a, b, e);
 		m = m + 20;
 	}
 	m = 0;
-	while (m < 200)
+a.color = 0x0000FF;
+b.color = 0xFFFFFF;
+	while (m < 500)
 	{
 		a.aff_x = 5;
 		a.aff_y = m;
-		b.aff_x = 100;
-		b.aff_y = 100;
+		b.aff_x = 250;
+		b.aff_y = 250;
 		ft_trace_segm(a, b, e);
 		m = m + 20;
 	}
