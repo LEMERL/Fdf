@@ -1,5 +1,35 @@
 #include "fdf.h"
 
+void		ft_use_tab(t_env *env, t_fdf ***tab)
+{
+	int		x;
+	int		y;
+	int		i;
+
+	x = 0;
+	y = 0;
+	while (tab[y] != NULL)
+	{
+		while (tab[y][x] != NULL)
+		{
+			if (tab[y][x + 1] != NULL)
+				ft_trace_segm(env, *tab[y][x], *tab[y][x +  1]);
+			if (tab[y + 1] != NULL)
+			{
+				i = 0;
+				while (i != x && tab[y + 1][i] != NULL)
+				{
+					if (x == i && tab[y + 1][i])
+						ft_trace_segm(env, *tab[y][x], *tab[y + 1][x]);
+					i++;
+				}
+			}
+				//	(&& tab[y + 1][x] != NULL)
+			x++;
+		}
+		y++;
+	}
+}
 typedef struct	s_color
 {
 	unsigned int			red;
@@ -32,16 +62,16 @@ int		ft_col(t_trace t)
 	verif.red = ((c1.red * progression + c2.red * (255 - progression)) * 256 * 256);
 	verif.green = (c1.green * progression + c2.green * (255 - progression)) * 256;
 	verif.blue = (c1.blue * progression + c2.blue * (255 - progression));
-	printf("progression : %d\ttmp : %d\tt.ref_prog : %d\n", progression, tmp, t.ref_prog);
+/*	printf("progression : %d\ttmp : %d\tt.ref_prog : %d\n", progression, tmp, t.ref_prog);
 	printf("t.c1 : %d\t\tt.c2 : %d\n", t.c1, t.c2);
 	printf("c1.red : %d\t\tc1.green : %d\t\tc1.blue : %d\n", c1.red, c1.green, c1.blue);
 	printf("c2.red : %d\t\tc2.green : %d\t\tc2.blue : %d\n", c2.red, c2.green, c2.blue);
 	printf("verif.red : %d\t\tverif.green : %d\t\tverif.blue : %d\n\n", verif.red, verif.green, verif.blue);
-	color = (verif.blue) / 255 + verif.green / 255 + verif.red / 255;
+*/	color = (verif.blue) / 255 + verif.green / 255 + verif.red / 255;
 	return (color);
 }
 
-void	ft_trace_segm(t_fdf p1, t_fdf p2, t_env *env)
+void	ft_trace_segm(t_env *env, t_fdf p1, t_fdf p2)
 {
 	int			e;
 	t_trace		t;

@@ -17,54 +17,115 @@ int	draw(t_env *e)
 	t_fdf	b;
 	int		m;
 
-	m = 0;
+	m = 5;
+a.color = 0x000000;
+b.color = 0xFF0000;
+	while (m < 495)
+	{
+		a.aff_x = m;
+		a.aff_y = 5;
+		b.aff_x = m;
+		b.aff_y = 495;
+		ft_trace_segm(a, b, e);
+		m = m + 25;
+	}
+	m = 10;
+a.color = 0x000000;
+b.color = 0x00FF00;
+	while (m < 495)
+	{
+		a.aff_x = m;
+		a.aff_y = 5;
+		b.aff_x = m;
+		b.aff_y = 495;
+		ft_trace_segm(a, b, e);
+		m = m + 25;
+	}
+	m = 15;
 a.color = 0x000000;
 b.color = 0x0000FF;
-	while (m < 500)
+	while (m < 495)
+	{
+		a.aff_x = m;
+		a.aff_y = 5;
+		b.aff_x = m;
+		b.aff_y = 495;
+		ft_trace_segm(a, b, e);
+		m = m + 25;
+	}
+	m = 20;
+a.color = 0x000000;
+b.color = 0xFFFF00;
+	while (m < 495)
+	{
+		a.aff_x = m;
+		a.aff_y = 5;
+		b.aff_x = m;
+		b.aff_y = 495;
+		ft_trace_segm(a, b, e);
+		m = m + 25;
+	}
+	m = 25;
+a.color = 0x000000;
+b.color = 0xFF00FF;
+	while (m < 495)
+	{
+		a.aff_x = m;
+		a.aff_y = 5;
+		b.aff_x = m;
+		b.aff_y = 495;
+		ft_trace_segm(a, b, e);
+		m = m + 25;
+	}
+/*
+	m = 5;
+a.color = 0x000000;
+b.color = 0x0000FF;
+	while (m < 495)
 	{
 		a.aff_x = m;
 		a.aff_y = 495;
 		b.aff_x = 250;
 		b.aff_y = 250;
 		ft_trace_segm(a, b, e);
-		m = m + 20;
+		m = m + 49;
 	}
-	m = 0;
+	m = 5;
 a.color = 0x000000;
 b.color = 0x00FF00;
-	while (m < 500)
+	while (m < 495)
 	{
 		a.aff_x = 495;
 		a.aff_y = m;
 		b.aff_x = 250;
 		b.aff_y = 250;
 		ft_trace_segm(a, b, e);
-		m = m + 20;
+		m = m + 49;
 	}
-	m = 0;
+	m = 5;
 a.color = 0x000000;
 b.color = 0xFF0000;
-	while (m < 500)
+	while (m < 495)
 	{
 		a.aff_x = m;
 		a.aff_y = 5;
 		b.aff_x = 250;
 		b.aff_y = 250;
 		ft_trace_segm(a, b, e);
-		m = m + 20;
+		m = m + 49;
 	}
-	m = 0;
-a.color = 0x0000FF;
+	m = 5;
+a.color = 0x000000;
 b.color = 0xFFFFFF;
-	while (m < 500)
+	while (m < 495)
 	{
 		a.aff_x = 5;
 		a.aff_y = m;
 		b.aff_x = 250;
 		b.aff_y = 250;
 		ft_trace_segm(a, b, e);
-		m = m + 20;
-	}
+		m = m + 49;
+	}*/
 	return (0);
 }
 

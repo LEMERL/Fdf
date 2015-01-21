@@ -43,7 +43,7 @@ typedef	struct	s_trace
 
 t_fdf			***fdf_proj_iso(t_fdf ***map, int c1, int c2);
 t_fdf			***fdf_proj_paral(t_fdf ***map, int cst);
-void			ft_trace_segm(t_fdf p1, t_fdf p2, t_env *env);
+void			ft_trace_segm(t_env *env, t_fdf p1, t_fdf p2);
 void			trace_0(t_trace t, t_env *env);
 void			trace_1(t_trace t, int e, t_env *env);
 void			trace_2(t_trace t, int e, t_env *env);
