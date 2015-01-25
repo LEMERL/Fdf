@@ -1,21 +1,33 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_map.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: scoudert <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/01/23 14:35:30 by scoudert          #+#    #+#             */
-/*   Updated: 2015/01/23 18:33:06 by scoudert         ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "fdf.h"
 #include <stdlib.h>
 
 /*
 ** Transforme le fichier recu en parametre par file descriptor en int **tab
 */
+
+t_fdf	**fdf_mapping(int argc, const char *argv[]);
+{
+	int		fd;
+	t_fdf	**s;
+
+	fd = 0;
+	if (argc != 2)
+	{
+		ft_putendl_fd("Map error : Please enter a valid map name", 2);
+		exit(0);
+	}
+	if ((fd = open(argv[1], O_RDONLY)) < 0)
+	{
+		ft_putendl_fd("Map error : Cannot read or find map", 2);
+		exit(0);
+	}
+	if ((s = get_map(fd)) == NULL)
+	{
+		ft_putendl_fd("Error : Program abort", 2);
+		exit(0);
+	}
+	return (s);
+}
 
 t_fdf		**get_map(int fd)
 {
