@@ -6,7 +6,7 @@
 /*   By: scoudert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 15:52:21 by scoudert          #+#    #+#             */
-/*   Updated: 2015/01/26 15:57:22 by mgrimald         ###   ########.fr       */
+/*   Updated: 2015/01/26 16:25:19 by mgrimald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,11 @@ void				ft_double_tab_del(void **tab);
 
 # define ISO 1
 void				fdf_calcul_proj(t_fdf **s, t_env *env);
-# define ISO_C1 50
+# define ISO_C1 75
 # define ISO_C2 50
 void				fdf_proj_iso(t_fdf *strc, int c1, int c2);
 void				fdf_proj_paral(t_fdf *strc, int cst);
-# define PARAL_CST 75
+# define PARAL_CST 100
 
 void				fdf_trace(t_fdf **s, t_env *env);
 void				ft_trace_segm(t_fdf p1, t_fdf p2, t_env *env);
@@ -86,8 +86,8 @@ void				trace_4(t_trace t, int e, t_env *env);
 # define DEGRADE_PC 4
 int					ft_col(t_trace t);
 
-# define MAX_X 400
-# define MAX_Y 200
+# define MAX_X 1000
+# define MAX_Y 600
 # define CST_ECART 20
 
 
