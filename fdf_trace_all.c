@@ -8,12 +8,14 @@ void	fdf_trace(t_fdf **s, t_env *env)
 
 	fdf_calcul_proj(s, env);
 	i = 0;
-	while ((j = 0) && s[i] && (i++))
+	while (s[i])
 	{
-		while (s[i][j].x >= 0 && (k = 0))
+		j = 0;
+		while (s[i][j].x >= 0)
 		{
+			k = 0;
 			if (s[i][j + 1].x >= 0)
-				ft_trace_segm(s[i][j], s[i][j], env);
+				ft_trace_segm(s[i][j], s[i][j + 1], env);
 			while (s[i + 1] && s[i][k].x >= 0 && (k != j + 1))
 			{
 				if (k == j)
@@ -22,6 +24,7 @@ void	fdf_trace(t_fdf **s, t_env *env)
 			}
 			j++;
 		}
+		i++;
 	}
 }
 

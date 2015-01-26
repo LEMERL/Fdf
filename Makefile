@@ -6,7 +6,7 @@
 #    By: scoudert <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/13 14:48:43 by scoudert          #+#    #+#              #
-#    Updated: 2015/01/25 17:54:56 by mgrimald         ###   ########.fr        #
+#    Updated: 2015/01/26 12:06:41 by mgrimald         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,8 +72,8 @@ debug:
 	@make -C minilibx_macos/ clean
 	@make -C minilibx_macos/
 	@echo "\033[32mCompile all \".c\" with debug flag\033[0m"
-	@$(CC) $(DEBUG) $(CFLAGS) -c $(SRC) -I $(HEADER)
-	@$(CC) $(DEBUG) $(CFLAGS) -o $(NAME) $(OBJ) libft/libft.a
+	@$(CC) $(DEBUG) $(CFLAGS) $(MLX) -c $(SRC) -I $(HEADER)
+	@$(CC) $(DEBUG) $(CFLAGS) $(MLX) -o $(NAME) $(OBJ) libft/libft.a
 	@echo "\033[36mCreate fdf\033[0m"
 
 mlx_free:

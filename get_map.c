@@ -54,6 +54,7 @@ t_fdf		**get_map(int fd)
 		array = array->next;
 		j++;
 	}
+	res[j] = NULL;
 	ft_lstdel(&ptr_array, del);
 	return (res);
 }

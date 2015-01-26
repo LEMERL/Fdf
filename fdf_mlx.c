@@ -18,8 +18,11 @@ int		mouse_hook(int button, int x, int y, t_env *e)
 
 int		expose_hook(t_env *e, t_fdf **map)
 {
-	(void)e;
+
 	(void)map;
+	(void)e;
+	//	if (map)
+	//		fdf_trace(map, e);
 	return (0);
 }
 
