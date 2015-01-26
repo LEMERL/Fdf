@@ -1,9 +1,11 @@
 #include "fdf.h"
 
-void	fdf_calcul_proj(t_fdf **s, t_env *env);
+void	fdf_calcul_proj(t_fdf **s, t_env *env)
 {
 	int		i;
 	int		j;
+
+	(void)env;
 
 	i = 0;
 	while ((j = 0) && s[i] && (i++))
@@ -11,9 +13,9 @@ void	fdf_calcul_proj(t_fdf **s, t_env *env);
 		while (s[i][j].x >= 0)
 		{
 			if (ISO == 1)
-				fdf_proj_iso(s[i][j], ISO_C1, ISO_C2, env);
+				fdf_proj_iso(s[i][j], ISO_C1, ISO_C2);
 			else
-				fdf_proj_paral(s[i][j], PARAL_CST, env);
+				fdf_proj_paral(s[i][j], PARAL_CST);
 			j++;
 		}
 	}

@@ -6,7 +6,7 @@
 /*   By: scoudert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 15:52:21 by scoudert          #+#    #+#             */
-/*   Updated: 2015/01/25 17:58:06 by mgrimald         ###   ########.fr       */
+/*   Updated: 2015/01/26 11:47:06 by mgrimald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdio.h>
 # include <string.h>
 # include <math.h>
+# include <mlx.h>
 # include "libft.h"
 
 typedef struct		s_env
@@ -56,6 +57,7 @@ typedef struct		s_trace
 	int				dy;
 	t_color			c1;
 	t_color			c2;
+	int				ref_prog;
 }					t_trace;
 
 
@@ -86,6 +88,8 @@ int					ft_col(t_trace t);
 
 # define MAX_X 200
 # define MAX_Y 200
+
+t_env		fdf_mlx(t_env *env, t_fdf **map);
 
 
 #endif

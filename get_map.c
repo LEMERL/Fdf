@@ -1,11 +1,12 @@
 #include "fdf.h"
 #include <stdlib.h>
+#include <fcntl.h>
 
 /*
 ** Transforme le fichier recu en parametre par file descriptor en int **tab
 */
 
-t_fdf	**fdf_mapping(int argc, const char *argv[]);
+t_fdf	**fdf_mapping(int argc, const char *argv[])
 {
 	int		fd;
 	t_fdf	**s;

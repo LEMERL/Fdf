@@ -6,7 +6,7 @@
 /*   By: scoudert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/13 14:36:22 by scoudert          #+#    #+#             */
-/*   Updated: 2015/01/25 17:48:48 by mgrimald         ###   ########.fr       */
+/*   Updated: 2015/01/26 11:54:14 by mgrimald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	fill_struct(int y, int x, char *prev_z, t_fdf *res)
 	str.x = x;
 	str.y = y;
 	str.z = ft_atoi(prev_z);
-	str.color = -42;
+	str.color = 0xFFFFFF;
 	str.aff_c = 0;
 	str.aff_x = 0;
 	str.aff_y = 0;

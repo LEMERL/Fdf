@@ -17,5 +17,5 @@ int		ft_col(t_trace t)
 	verif.green = (t.c1.green * prog + t.c2.green * (255 - prog)) * 256;
 	verif.blue = (t.c1.blue * prog + t.c2.blue * (255 - prog));
 	verif.color = (verif.blue) / 255 + verif.green / 255 + verif.red / 255;
-	return (color);
+	return (verif.color);
 }
