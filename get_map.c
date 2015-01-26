@@ -49,7 +49,7 @@ t_fdf		**get_map(int fd)
 	res = (t_fdf**)ft_memalloc(sizeof(t_fdf*) * (countelem(array) + 1));
 	while (array != NULL)
 	{
-		if ((res[j] = ft_strtofdf(array->content, j)) == NULL)
+		if ((res[j] = ft_strtofdf(array->content, j, 0)) == NULL)
 			return (NULL);
 		array = array->next;
 		j++;
