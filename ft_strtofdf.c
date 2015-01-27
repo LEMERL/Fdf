@@ -18,33 +18,42 @@
  ** en un tableau d'int.
  */
 
-static size_t		recup_col(char *s, size_t result, int i)
+static size_t		aux_color(size_t result, char *s, int i)
 {
-	while (s && *s && ft_isdigit(*s) == 1)
-		s++;
-	if ((i = 0) || (s && s[i]))
-		s++;
-	while (s[i] != '\0')
-	{
-		s[i] = ft_toupper(s[i]);
+	result = result * 16;
+	if (s[i] >= '0' && s[i] <= '9')
+		result = result + s[i] - '0';
+	if (s[i] >= 'A' && s[i] <= 'F')
+		result = result + s[i] - 'A' + 10;
+	return (result);
+}
+
+static size_t		recup_col(char *s, size_t result, int i, int j)
+{
+	while (ft_isdigit(s[i]) == 1 && s[i])
 		i++;
+	if (s && s[i])
+		i++;
+	j = i + 1;
+	while (s[j] != '\0')
+	{
+		s[j] = ft_toupper(s[j]);
+		j++;
 	}
 	if (s && s[i] == '0' && s + 1 && s + 2 && s[i + 1] == 'X')
 	{
-		s = s + 2;
-		while (s[i] != 0 && ((s[i] >= '0' && s[i] <= '9')
-				|| (s[i] >= 'A' && s[i] <= 'F')))
+		result = 1;
+		i += 2;
+		while (s[i] != '\0' && ((s[i] >= '0' && s[i] <= '9')
+		|| (s[i] >= 'A' && s[i] <= 'F')))
 			i++;
-		while ((--i) >= 0)
+		while (i >= j)
 		{
-			result = result * 16;
-			if (s[i] >= '0' && s[i] <= '9')
-				result = result + s[i] - '0';
-			if (s[i] >= 'A' && s[i] <= 'F')
-				result = result + s[i] - 'A' + 10;
+			result = aux_color(result, s, i);
+			i--;
 		}
 	}
-	return (result);
+	return (result - 1);
 }
 
 static void		free_all(char **split, size_t *color)
@@ -61,7 +70,7 @@ static void		free_all(char **split, size_t *color)
 	free(color);
 }
 
-static void		fill_struct(int y, int x, char *prev_z, t_fdf *res)
+static void		fill_struct(int y, int x, char *prev_z, t_fdf *res, int color)
 {
 	t_fdf	str;
 
@@ -69,7 +78,7 @@ static void		fill_struct(int y, int x, char *prev_z, t_fdf *res)
 	str.x = x;
 	str.y = y;
 	str.z = ft_atoi(prev_z);
-	str.color = -42;
+	str.color = color;
 	str.aff_c = 0;
 	str.aff_x = 0;
 	str.aff_y = 0;
@@ -92,11 +101,14 @@ t_fdf			*ft_strtofdf(const char *s, int line, int i)
 		return (NULL);
 	split = ft_strsplit(s, ' ');
 	while (i < words && split[i])
-		color[i] = recup_col(split[i], 42, 0);
+	{
+		color[i] = recup_col(split[i], -41, 0, 0);
+		i++;
+	}
 	i = 0;
 	while (i < words && split[i])
 	{
-		fill_struct(line, i, split[i], result + i);
+		fill_struct(line, i, split[i], result + i, (int)color[i]);
 		i++;
 	}
 	result[words].x = (-42);
