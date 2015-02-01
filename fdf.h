@@ -6,7 +6,7 @@
 /*   By: scoudert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 15:52:21 by scoudert          #+#    #+#             */
-/*   Updated: 2015/01/26 16:25:19 by mgrimald         ###   ########.fr       */
+/*   Updated: 2015/02/01 17:41:58 by mgrimald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,42 @@ typedef struct		s_env
 {
 	void			*mlx;
 	void			*win;
+	void			*img;
+	t_fdf			**mapping;
+	t_var_map		var_map;
+	t_var_proj		var_proj;
+	t_var_color		var_color;
 }					t_env;
+
+typedef struct		s_var_map
+{
+	int				max_x;
+	int				low_x;
+	int				max_y;
+	int				low_y;
+	int				max_z;
+	int				low_z;
+	int				ecart;
+	int				win_x;
+	int				win_y;
+}					t_var_map;
+
+typedef struct		s_var_proj
+{
+	int				proj_type;//0 = iso, 1 = paral;
+	int				iso_1;//entre 50 et 100
+	int				iso_2;//entre 50 et 100
+	int				paral;//entre 50 et 100
+}					t_var_proj;
+
+typedef struct		s_var_color
+{
+	int				col_flag;//0 = FULL WHITE, 1 = original color, 2 = personalisable color sauf specifiee, 3 = full personalisable
+	int				degradee;//0 = no, sinon : niveau de progression x/255
+	int				col_underground;//if (col_flag == 2/3)
+	int				col_ground;//if (color flag == 2/3) : defini couleur du niveau 0
+	int				col_high;//if (color flag == 2/3) : defini couleur du plus haut niveau
+}					t_var_color;
 
 typedef struct		s_fdf
 {
@@ -66,13 +101,8 @@ t_fdf				**get_map(int fd);
 t_fdf				*ft_strtofdf(const char *s, int line);
 void				ft_double_tab_del(void **tab);
 
-# define ISO 1
 void				fdf_calcul_proj(t_fdf **s, t_env *env);
-# define ISO_C1 75
-# define ISO_C2 50
-void				fdf_proj_iso(t_fdf *strc, int c1, int c2);
-void				fdf_proj_paral(t_fdf *strc, int cst);
-# define PARAL_CST 100
+t_fdf				ft_proj_cal(t_fdf strc, t_env *e, int i, int j);
 
 void				fdf_trace(t_fdf **s, t_env *env);
 void				ft_trace_segm(t_fdf p1, t_fdf p2, t_env *env);
@@ -89,7 +119,6 @@ int					ft_col(t_trace t);
 # define MAX_X 1000
 # define MAX_Y 600
 # define CST_ECART 20
-
 
 t_env		fdf_mlx(t_env *env, t_fdf **map);
 
