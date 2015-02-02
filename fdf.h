@@ -6,7 +6,7 @@
 /*   By: scoudert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 15:52:21 by scoudert          #+#    #+#             */
-/*   Updated: 2015/02/01 17:41:58 by mgrimald         ###   ########.fr       */
+/*   Updated: 2015/02/02 18:10:03 by mgrimald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,6 @@
 # include <mlx.h>
 # include "libft.h"
 
-typedef struct		s_env
-{
-	void			*mlx;
-	void			*win;
-	void			*img;
-	t_fdf			**mapping;
-	t_var_map		var_map;
-	t_var_proj		var_proj;
-	t_var_color		var_color;
-}					t_env;
 
 typedef struct		s_var_map
 {
@@ -95,6 +85,16 @@ typedef struct		s_trace
 	int				ref_prog;
 }					t_trace;
 
+typedef struct		s_env
+{
+	void			*mlx;
+	void			*win;
+	void			*img;
+	t_fdf			**mapping;
+	t_var_map		var_map;
+	t_var_proj		var_proj;
+	t_var_color		var_color;
+}					t_env;
 
 t_fdf				**fdf_mapping(int argc, const char *argv[]);
 t_fdf				**get_map(int fd);
@@ -113,12 +113,7 @@ void				trace_2(t_trace t, int e, t_env *env);
 void				trace_3(t_trace t, int e, t_env *env);
 void				trace_4(t_trace t, int e, t_env *env);
 
-# define DEGRADE_PC 4
 int					ft_col(t_trace t);
-
-# define MAX_X 1000
-# define MAX_Y 600
-# define CST_ECART 20
 
 t_env		fdf_mlx(t_env *env, t_fdf **map);
 

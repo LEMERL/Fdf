@@ -6,7 +6,6 @@ void	fdf_trace(t_fdf **s, t_env *env)
 	int		j;
 	int		k;
 
-	fdf_calcul_proj(s, env);
 	i = 0;
 	while (s[i])
 	{

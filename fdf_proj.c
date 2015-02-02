@@ -20,12 +20,12 @@ void	fdf_calcul_proj(t_fdf **s, t_env *env)
 	while (s[++i] && ((j = -1) + 2))
 		while (s[i][++j].x >= 0)
 		{
-			strc->aff_y = (strc->aff_y - map->max_y) * map->ecart;
-			strc->aff_x = (strc->aff_x - map->max_x) * map->ecart;
+			strc->aff_y = (strc->aff_y - map->low_y) * map->ecart;
+			strc->aff_x = (strc->aff_x - map->low_x) * map->ecart;
 		}
 }
 
-t_fdf	ft_proj_cal(t_fdf	strc, t_env *e, int i, int j)
+t_fdf	ft_proj_cal(t_fdf strc, t_env *e, int i, int j)
 {
 	if (e->var_proj.proj_type == 0)
 		if (strc->x >= 0)
