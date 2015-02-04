@@ -6,7 +6,7 @@
 /*   By: scoudert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 15:52:21 by scoudert          #+#    #+#             */
-/*   Updated: 2015/02/02 18:10:03 by mgrimald         ###   ########.fr       */
+/*   Updated: 2015/02/04 14:14:34 by mgrimald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,6 @@ typedef struct		s_var_map
 	int				win_x;
 	int				win_y;
 }					t_var_map;
-
-typedef struct		s_var_proj
-{
-	int				proj_type;//0 = iso, 1 = paral;
-	int				iso_1;//entre 50 et 100
-	int				iso_2;//entre 50 et 100
-	int				paral;//entre 50 et 100
-}					t_var_proj;
 
 typedef struct		s_var_color
 {
@@ -92,9 +84,12 @@ typedef struct		s_env
 	void			*img;
 	t_fdf			**mapping;
 	t_var_map		var_map;
-	t_var_proj		var_proj;
 	t_var_color		var_color;
+	int				proj_type;//0 = iso, 1 = paral;
 }					t_env;
+
+t_env				*fdf_strc_ini(t_env *e, int argc, const char **argv);
+int					ft_restart(t_env *e);
 
 t_fdf				**fdf_mapping(int argc, const char *argv[]);
 t_fdf				**get_map(int fd);
@@ -113,9 +108,9 @@ void				trace_2(t_trace t, int e, t_env *env);
 void				trace_3(t_trace t, int e, t_env *env);
 void				trace_4(t_trace t, int e, t_env *env);
 
-int					ft_col(t_trace t);
+int					ft_col(t_trace t, t_env *e);
 
-t_env		fdf_mlx(t_env *env, t_fdf **map);
+t_env		fdf_mlx(t_env *env);
 
 
 #endif

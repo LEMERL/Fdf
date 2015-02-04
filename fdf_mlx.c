@@ -26,9 +26,8 @@ int		expose_hook(t_env *e, t_fdf **map)
 	return (0);
 }
 
-t_env	fdf_mlx(t_env *env, t_fdf **map)
+t_env	fdf_mlx(t_env *env)
 {
-	(void)map;
 	mlx_key_hook(env->win, key_hook, env);
 	mlx_mouse_hook(env->win, mouse_hook, env);
 	mlx_expose_hook(env->win, expose_hook, env);

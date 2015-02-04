@@ -1,11 +1,13 @@
 #include "fdf.h"
 
-int		ft_col(t_trace t, t_env *e, t_var_color vcol)
+int		ft_col(t_trace t, t_env *e)
 {
-	int		prog;
-	int		tmp;
-	t_color	verif;
+	int			prog;
+	int			tmp;
+	t_color		verif;
+	t_var_color	vcol;
 
+	vcol = e->var_color;
 	tmp = (((t.x2 - t.x1) * (t.x2 - t.x1)) + ((t.y2 - t.y1) * (t.y2 - t.y1)));
 	if (vcol.degradee > 0)
 	{
