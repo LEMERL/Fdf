@@ -6,7 +6,7 @@
 #    By: scoudert <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/13 14:48:43 by scoudert          #+#    #+#              #
-#    Updated: 2015/02/04 14:10:07 by mgrimald         ###   ########.fr        #
+#    Updated: 2015/02/04 15:13:35 by scoudert         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ MLX = -L/usr/x11/lib -lmlx -lXext -lX11
 
 DEBUG = $(CFLAGS) -g
 
-NAME = caca
+NAME = fdf
 
 CC = gcc
 
@@ -28,7 +28,8 @@ SRC = main.c \
 	  fdf_mlx.c \
 	  fdf_proj.c \
 	  fdf_trace_all.c \
-	  fdf_tracer.c
+	  fdf_tracer.c \
+	  test_get_map.c
 
 HEADER = libft/includes
 

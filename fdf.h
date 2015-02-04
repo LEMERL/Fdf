@@ -6,7 +6,7 @@
 /*   By: scoudert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 15:52:21 by scoudert          #+#    #+#             */
-/*   Updated: 2015/02/04 14:14:34 by mgrimald         ###   ########.fr       */
+/*   Updated: 2015/02/04 15:11:49 by scoudert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ int					ft_restart(t_env *e);
 
 t_fdf				**fdf_mapping(int argc, const char *argv[]);
 t_fdf				**get_map(int fd);
-t_fdf				*ft_strtofdf(const char *s, int line);
+t_fdf				*ft_strtofdf(const char *s, int line, int i);
 void				ft_double_tab_del(void **tab);
 
 void				fdf_calcul_proj(t_fdf **s, t_env *env);
@@ -107,6 +107,7 @@ void				trace_1(t_trace t, int e, t_env *env);
 void				trace_2(t_trace t, int e, t_env *env);
 void				trace_3(t_trace t, int e, t_env *env);
 void				trace_4(t_trace t, int e, t_env *env);
+void				test_get_map(t_fdf **s);
 
 int					ft_col(t_trace t, t_env *e);
 
