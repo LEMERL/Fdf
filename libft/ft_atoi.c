@@ -1,3 +1,4 @@
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -10,19 +11,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_atoi(char *str)
+#include "libft.h"
+
+int	ft_atoi(char const *str)
 {
 	int		is_negative;
 	int		value;
 
 	is_negative = 0;
 	value = 0;
-	while (*str == '\n' || *str == ' ' || *str == '\r' ||
-			*str == '\v' || *str == '\t' || *str == '\f')
-		str++;
+	str = ft_strtrim(str);
 	if (*str == '+')
 		str++;
-	else if (*str == '-')
+	if (*str == '-')
 	{
 		is_negative = 1;
 		str++;
@@ -33,6 +34,6 @@ int	ft_atoi(char *str)
 		str++;
 	}
 	if (!is_negative)
-		value = -value;
+		value *= -1;
 	return (value);
 }
