@@ -11,29 +11,31 @@ int		ft_hexatodeci(char *str)
 
 	value = -42;
 	str = ft_strtrim(str);
-	str = ft_strtoupper(str);
 	while (*str)
 	{
-		if (*str == 0 && *str + 1 == 'X')
+		if (*str == '0' && (*(++str) == 'X' || *str == 'x'))
 		{
-			if (*str == 0 && *str + 1 == 'X')
+			str++;
+			value = 0;
+			while (((*str <= '9') && (*str >= '0'))
+					|| ((*str >= 'A') && (*str <= 'Z'))
+					|| ((*str >= 'a') && (*str <= 'z')))
+				str++;
+			while (*str != 'X' && *str != 'x')
 			{
-				value = 0;
-				while (((*str <= '9') && (*str >= '0'))
-						&& ((*str >= 'A') && (*str <= 'Z')))
-					str++;
-				while (*str != 'X')
-				{
-					value *= 16;
-					if (*str >= '0' && *str <= '9')
-						value = (value + *str) - '0';
-					if (*str >= 'A' && *str <= 'Z')
-						value = (value + *str) - ('A' + 10);
-					str--;
-				}
+				value *= 16;
+				if (*str >= '0' && *str <= '9')
+					value = (value + *str) - '0';
+				if (*str >= 'A' && *str <= 'Z')
+					value = ((value + *str) - 'A') + 10;
+				if (*str >= 'a' && *str <= 'z')
+					value = ((value + *str) - 'a') + 10;
+				str--;
 			}
+			return (value);
 		}
-		str++;
+		else
+			str++;
 	}
 	return (value);
 }
