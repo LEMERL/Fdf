@@ -6,7 +6,7 @@
 /*   By: scoudert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/10 16:11:11 by scoudert          #+#    #+#             */
-/*   Updated: 2015/01/22 16:57:28 by scoudert         ###   ########.fr       */
+/*   Updated: 2015/02/05 12:23:36 by scoudert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 # include <string.h>
 
+int					ft_hexatodeci(char *str);
 void				ft_putendl(char const *s);
 void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(const char *str, int fd);
@@ -74,6 +75,7 @@ unsigned int		countword(const char *s, char sep);
 int					get_next_line(int const fd, char **line);
 void				**ft_tabnew(int size);
 void				putn(void);
+char				*ft_strtoupper(char *s);
 
 typedef struct		s_list
 {

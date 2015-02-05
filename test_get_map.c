@@ -6,7 +6,7 @@
 /*   By: scoudert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/12/22 11:13:30 by scoudert          #+#    #+#             */
-/*   Updated: 2015/02/04 15:11:19 by scoudert         ###   ########.fr       */
+/*   Updated: 2015/02/05 12:47:10 by scoudert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void		test_get_map(t_fdf **s)
 			printf("Nous sommes a l'index %d :\n", j);
 			printf("Ligne : %d\n", s[i][j].y);
 			printf("Hauteur : %d\n", s[i][j].z);
-		printf("\n");
 			printf("Colomne : %d\n", s[i][j].x);
 			printf("Couleur : %d\n", s[i][j].color);
 			printf("aff_x : %d\n", s[i][j].aff_x);

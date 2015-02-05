@@ -6,7 +6,7 @@
 /*   By: scoudert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/13 14:36:22 by scoudert          #+#    #+#             */
-/*   Updated: 2015/02/04 15:30:09 by scoudert         ###   ########.fr       */
+/*   Updated: 2015/02/05 12:46:02 by scoudert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
  ** Transforme un tableau de char contenant des chiffres separes par des espaces
  ** en un tableau d'int.
  */
-
+/*
 static size_t		aux_color(size_t result, char *s, int i)
 {
 	result = result * 16;
@@ -55,7 +55,7 @@ static size_t		recup_col(char *s, size_t result, int i, int j)
 	}
 	return (result - 1);
 }
-
+*/
 static void		free_all(char **split, size_t *color)
 {
 	int		i;
@@ -102,7 +102,7 @@ t_fdf			*ft_strtofdf(const char *s, int line, int i)
 	split = ft_strsplit(s, ' ');
 	while (i < words && split[i])
 	{
-		color[i] = recup_col(split[i], -41, 0, 0);
+		color[i] = ft_hexatodeci(split[i]);
 		i++;
 	}
 	i = 0;
