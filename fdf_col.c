@@ -24,5 +24,7 @@ int		ft_col(t_trace t, t_env *e)
 	}
 	else
 		verif.color = t.c1.color;
+	if (verif.color < 0 || verif.color >= 0x1000000)
+		verif.color = 0xFFFFFF;
 	return (verif.color);
 }
