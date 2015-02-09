@@ -42,7 +42,7 @@ t_env	*fdf_strc_ini(t_env *e, int argc, const char **argv)
 	e->proj_type = 0;
 	e->var_color.degradee = 20;
 	e->var_map.win_x = 2000;
-	e->var_map.win_y = 1000;
+	e->var_map.win_y = 1500;
 	if (e->mlx == NULL || e->mapping == NULL)
 		return (NULL);
 	return (e);

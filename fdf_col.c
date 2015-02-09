@@ -28,3 +28,17 @@ int		ft_col(t_trace t, t_env *e)
 		verif.color = 0xFFFFFF;
 	return (verif.color);
 }
+
+/*
+ft_set_color();
+{
+	int		i;
+	t_fdf	**s;
+
+	s = (e->map);
+	i = -1;
+	while (s[++i] && ((j = -1) + 2))
+		while (s[i][++j].x >= 0)
+			s[i][j] = ft_proj_cal(s[i][j], env, i, j);
+	e->map = s;
+}*/
