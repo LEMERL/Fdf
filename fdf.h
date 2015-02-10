@@ -6,7 +6,7 @@
 /*   By: scoudert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 15:52:21 by scoudert          #+#    #+#             */
-/*   Updated: 2015/02/06 15:38:34 by mgrimald         ###   ########.fr       */
+/*   Updated: 2015/02/10 14:28:59 by mgrimald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,12 @@
 
 typedef struct		s_var_map
 {
-	int				max_x;
-	int				low_x;
-	int				max_y;
-	int				low_y;
-	int				max_z;
-	int				low_z;
+	float				max_x;
+	float				low_x;
+	float				max_y;
+	float				low_y;
+	float				max_z;
+	float				low_z;
 	int				ecart;
 	int				win_x;
 	int				win_y;

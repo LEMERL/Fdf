@@ -54,12 +54,12 @@ t_trace	fdf_trace_initial_struct(t_fdf p1, t_fdf p2)
 {
 	t_trace		t;
 
-	t.dx = (p2.aff_x - p1.aff_x) * 2;
-	t.dy = (p2.aff_y - p1.aff_y) * 2;
-	t.x1 = p1.aff_x;
-	t.x2 = p2.aff_x;
-	t.y1 = p1.aff_y;
-	t.y2 = p2.aff_y;
+	t.dx = (int)(p2.aff_x - p1.aff_x) * 2;
+	t.dy = (int)(p2.aff_y - p1.aff_y) * 2;
+	t.x1 = (int)p1.aff_x;
+	t.x2 = (int)p2.aff_x;
+	t.y1 = (int)p1.aff_y;
+	t.y2 = (int)p2.aff_y;
 	t.c1.color = p1.color;
 	t.c2.color = p2.color;
 	t.c1.red = t.c1.color / (256 * 256);

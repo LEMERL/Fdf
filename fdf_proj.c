@@ -7,21 +7,28 @@ void	fdf_calcul_proj(t_fdf **s, t_env *env)
 	t_var_map	*map;
 
 	map = &(env->var_map);
-	i = -1;
-	while (s[++i] && ((j = -1) + 2))
-		while (s[i][++j].x >= 0)
-			s[i][j] = ft_proj_cal(s[i][j], env, i, j);
-	map->ecart = map->win_x / (map->max_x - map->low_x);
-	if (map->ecart > (map->win_y / (map->max_y + 1 - map->low_y)))
-		map->ecart = map->win_y / (map->max_y + 1 - map->low_y);
-	if (map->ecart == 0)
+	if (map->ecart == -42 && ((i = -1) + 2))
+	{
+		map->ecart = 1;
+		while (s[++i] && ((j = -1) + 2))
+			while (s[i][++j].x >= 0)
+				s[i][j] = ft_proj_cal(s[i][j], env, i, j);
+		map->ecart = map->win_x / (map->max_x + 1 - map->low_x);
+		if (map->ecart > (map->win_y / (map->max_y + 1 - map->low_y)))
+			map->ecart = map->win_y / (map->max_y + 1 - map->low_y);
+	}
+	if (map->ecart <= 0)
 		map->ecart = 1;
 	i = -1;
 	while (s[++i] && ((j = -1) + 2))
 		while (s[i][++j].x >= 0)
+			s[i][j] = ft_proj_cal(s[i][j], env, i, j);
+	i = -1;
+	while (s[++i] && ((j = -1) + 2))
+		while (s[i][++j].x >= 0)
 		{
-			s[i][j].aff_y = ((s[i][j].aff_y - map->low_y) * map->ecart);
-			s[i][j].aff_x = ((s[i][j].aff_x - map->low_x) * map->ecart);
+			s[i][j].aff_x = s[i][j].aff_x + 5 - map->low_x;
+			s[i][j].aff_y = s[i][j].aff_y + 5 - map->low_y;
 		}
 }
 
@@ -32,8 +39,8 @@ t_fdf	ft_proj_cal(t_fdf strc, t_env *e, int i, int j)
 /*		strc.aff_x = ((75 * strc.x) - (75 * strc.y)) / 100;
 		strc.aff_y = strc.z + ((75 * strc.x) + (75 * strc.y)) / 2;
 		strc.aff_y = strc.aff_y / 100;
-*/		strc.aff_x = strc.x * 100 + (35 * strc.z);
-		strc.aff_y = strc.y * 100 - (35 * strc.z);
+*/		strc.aff_x = ((strc.x * 100 + (35 * strc.z)) * e->var_map.ecart) / 100;
+		strc.aff_y = ((strc.y * 100 - (35 * strc.z)) * e->var_map.ecart) / 100;
 	}
 	else if (strc.x >= 0)
 	{

@@ -20,17 +20,15 @@ int		ft_hexatodeci(char *str)
 			while (((*str <= '9') && (*str >= '0'))
 					|| ((*str >= 'A') && (*str <= 'Z'))
 					|| ((*str >= 'a') && (*str <= 'z')))
-				str++;
-			while (*str != 'X' && *str != 'x')
 			{
-				value *= 16;
+				value = value * 16;
 				if (*str >= '0' && *str <= '9')
 					value = (value + *str) - '0';
 				if (*str >= 'A' && *str <= 'Z')
 					value = ((value + *str) - 'A') + 10;
 				if (*str >= 'a' && *str <= 'z')
 					value = ((value + *str) - 'a') + 10;
-				str--;
+				str++;
 			}
 			return (value);
 		}
