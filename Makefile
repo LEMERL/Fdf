@@ -6,7 +6,7 @@
 #    By: scoudert <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/13 14:48:43 by scoudert          #+#    #+#              #
-#    Updated: 2015/02/04 15:13:35 by scoudert         ###   ########.fr        #
+#    Updated: 2015/02/11 15:02:55 by mgrimald         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,12 +26,13 @@ SRC = main.c \
 	  get_map.c \
 	  fdf_col.c \
 	  fdf_mlx.c \
+	  fdf_img.c \
 	  fdf_proj.c \
 	  fdf_trace_all.c \
 	  fdf_tracer.c \
 	  test_get_map.c
 
-HEADER = libft/includes
+HEADER = ./libft/includes/
 
 OBJ = $(SRC:.c=.o)
 
@@ -49,7 +50,7 @@ $(NAME): $(SRC)
 	@make -C minilibx_macos/
 	@echo "\033[32mCompile all \".c\"\033[0m"
 	@$(CC) $(CFLAGS) $(MLX) -c $(SRC) -I $(HEADER)
-	@$(CC) $(CFLAGSGS) $(MLX) -o $(NAME) $(OBJ) libft/libft.a
+	@$(CC) $(CFLAGS) $(MLX) -o $(NAME) $(OBJ) libft/libft.a
 	@echo "\033[36mCreate fdf executable \033[0m"
 
 

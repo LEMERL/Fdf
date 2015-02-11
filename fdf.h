@@ -6,7 +6,7 @@
 /*   By: scoudert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 15:52:21 by scoudert          #+#    #+#             */
-/*   Updated: 2015/02/10 14:28:59 by mgrimald         ###   ########.fr       */
+/*   Updated: 2015/02/11 15:37:41 by mgrimald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,20 @@
 # include "libft.h"
 
 
-typedef struct		s_var_map
+typedef struct		s_v_map
 {
-	float				max_x;
-	float				low_x;
-	float				max_y;
-	float				low_y;
-	float				max_z;
-	float				low_z;
+	float			max_x;
+	float			low_x;
+	float			max_y;
+	float			low_y;
+	float			max_z;
+	float			low_z;
 	int				ecart;
 	int				win_x;
 	int				win_y;
-}					t_var_map;
+	int				img_x;
+	int				img_y;
+}					t_v_map;
 
 typedef struct		s_var_color
 {
@@ -77,13 +79,24 @@ typedef struct		s_trace
 	int				ref_prog;
 }					t_trace;
 
+typedef struct			s_img
+{
+	void				*ptr;
+	int					width;
+	int					height;
+	char				*data;
+	int					bpp;
+	int					size_line;
+	int					endian;
+}						t_img;
+
 typedef struct		s_env
 {
 	void			*mlx;
 	void			*win;
-	void			*img;
+	t_img			*img;
 	t_fdf			**mapping;
-	t_var_map		var_map;
+	t_v_map		v_map;
 	t_var_color		var_color;
 	int				proj_type;//0 = iso, 1 = paral;
 }					t_env;
@@ -109,7 +122,9 @@ void				trace_3(t_trace t, int e, t_env *env);
 void				trace_4(t_trace t, int e, t_env *env);
 void				test_get_map(t_fdf **s);
 
+int					img_pixel_put(t_env *e, int x, int y, int color);
 int					ft_col(t_trace t, t_env *e);
+void				new_img(t_env *e);
 
 t_env		fdf_mlx(t_env *env);
 
