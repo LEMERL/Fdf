@@ -15,9 +15,9 @@ void	fdf_trace(t_fdf **s, t_env *env)
 			k = 0;
 			if (s[i][j + 1].x >= 0)
 				ft_trace_segm(s[i][j], s[i][j + 1], env);
-			while (s[i + 1] && s[i][k].x >= 0 && (k != j + 1))
+			while (s[i + 1] && s[i + 1][k].x >= 0 && (k != j + 1))
 			{
-				if (k == j)
+				if (k == j && s[i + 1][k].x >= 0)
 					ft_trace_segm(s[i][j], s[i + 1][j], env);
 				k++;
 			}
@@ -47,7 +47,7 @@ void	ft_trace_segm(t_fdf p1, t_fdf p2, t_env *env)
 		trace_3(t, e, env);
 	else if (t.dx == 0 || t.dy == 0)
 		trace_0(t, env);
-	mlx_pixel_put(env->mlx, env->win, t.x2, t.y2, t.c2.color);
+	img_pixel_put(env, t.x2, t.y2, t.c2.color);
 }
 
 t_trace	fdf_trace_initial_struct(t_fdf p1, t_fdf p2)
