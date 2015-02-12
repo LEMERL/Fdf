@@ -42,3 +42,12 @@ ft_set_color();
 			s[i][j] = ft_proj_cal(s[i][j], env, i, j);
 	e->map = s;
 }*/
+
+int		ft_color_pick(t_v_map cst, t_var_color vcol, t_fdf *strc)
+{
+	strc->aff_c = 0xFFFFFF;
+	if (vcol.col_flag >= 2)
+		strc->aff_c = 0xFFFFFF;//degradee
+	if (vcol.col_flag >= 1 && vcol.col_flag != 3 && strc->color != -42)
+		strc->aff_c = strc.color;
+}

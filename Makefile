@@ -6,7 +6,7 @@
 #    By: scoudert <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/13 14:48:43 by scoudert          #+#    #+#              #
-#    Updated: 2015/02/11 15:02:55 by mgrimald         ###   ########.fr        #
+#    Updated: 2015/02/12 22:40:28 by mgrimald         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,6 @@ NAME = fdf
 CC = gcc
 
 SRC = main.c \
-	  ft_strtofdf.c \
-	  ft_double_tab_del.c \
 	  get_map.c \
 	  fdf_col.c \
 	  fdf_mlx.c \
@@ -30,6 +28,7 @@ SRC = main.c \
 	  fdf_proj.c \
 	  fdf_trace_all.c \
 	  fdf_tracer.c \
+	  ft_strtofdf.c \
 	  test_get_map.c
 
 HEADER = ./libft/includes/

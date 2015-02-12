@@ -6,7 +6,7 @@
 /*   By: scoudert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/10 16:11:11 by scoudert          #+#    #+#             */
-/*   Updated: 2015/02/05 12:23:36 by scoudert         ###   ########.fr       */
+/*   Updated: 2015/02/12 22:03:33 by mgrimald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 # include <string.h>
 
+void				ft_double_tab_del(void **tab);
 int					ft_hexatodeci(char *str);
 void				ft_putendl(char const *s);
 void				ft_putchar_fd(char c, int fd);

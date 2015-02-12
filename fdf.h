@@ -6,7 +6,7 @@
 /*   By: scoudert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 15:52:21 by scoudert          #+#    #+#             */
-/*   Updated: 2015/02/11 15:37:41 by mgrimald         ###   ########.fr       */
+/*   Updated: 2015/02/12 22:04:38 by mgrimald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,6 @@ int					ft_restart(t_env *e);
 t_fdf				**fdf_mapping(int argc, const char *argv[]);
 t_fdf				**get_map(int fd);
 t_fdf				*ft_strtofdf(const char *s, int line, int i);
-void				ft_double_tab_del(void **tab);
 
 void				fdf_calcul_proj(t_fdf **s, t_env *env);
 t_fdf				ft_proj_cal(t_fdf strc, t_env *e, int i, int j);
