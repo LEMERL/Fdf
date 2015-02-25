@@ -60,14 +60,6 @@ t_trace	fdf_trace_initial_struct(t_fdf p1, t_fdf p2)
 	t.x2 = (int)p2.aff_x;
 	t.y1 = (int)p1.aff_y;
 	t.y2 = (int)p2.aff_y;
-	t.c1.color = p1.color;
-	t.c2.color = p2.color;
-	t.c1.red = t.c1.color / (256 * 256);
-	t.c1.green = (t.c1.color / 256) % 256;
-	t.c1.blue = t.c1.color % (256);
-	t.c2.red = t.c2.color / (256 * 256);
-	t.c2.green = (t.c2.color / 256) % 256;
-	t.c2.blue = (t.c2.color % 256);
 	t.ref_prog = (((t.dx * t.dx) + (t.dy * t.dy)) / 4);
 	return (t);
 }

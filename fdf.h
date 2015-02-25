@@ -6,7 +6,7 @@
 /*   By: scoudert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 15:52:21 by scoudert          #+#    #+#             */
-/*   Updated: 2015/02/12 22:04:38 by mgrimald         ###   ########.fr       */
+/*   Updated: 2015/02/13 14:30:59 by mgrimald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,21 @@ typedef struct		s_v_map
 	int				img_y;
 }					t_v_map;
 
+typedef struct		s_color
+{
+	unsigned int	red;
+	unsigned int	green;
+	unsigned int	blue;
+	int				color;
+}					t_color;
+
 typedef struct		s_var_color
 {
 	int				col_flag;//0 = FULL WHITE, 1 = original color, 2 = personalisable color sauf specifiee, 3 = full personalisable
 	int				degradee;//0 = no, sinon : niveau de progression x/255
-	int				col_underground;//if (col_flag == 2/3)
-	int				col_ground;//if (color flag == 2/3) : defini couleur du niveau 0
-	int				col_high;//if (color flag == 2/3) : defini couleur du plus haut niveau
+	t_color			col_underground;//if (col_flag == 2/3)
+	t_color			col_ground;//if (color flag == 2/3) : defini couleur du niveau 0
+	t_color			col_high;//if (color flag == 2/3) : defini couleur du plus haut niveau
 }					t_var_color;
 
 typedef struct		s_fdf
@@ -55,16 +63,8 @@ typedef struct		s_fdf
 	int				color;
 	int				aff_x;
 	int				aff_y;
-	int				aff_c;
+	t_color			aff_c;
 }					t_fdf;
-
-typedef struct		s_color
-{
-	unsigned int	red;
-	unsigned int	green;
-	unsigned int	blue;
-	int				color;
-}					t_color;
 
 typedef struct		s_trace
 {
@@ -121,8 +121,11 @@ void				trace_3(t_trace t, int e, t_env *env);
 void				trace_4(t_trace t, int e, t_env *env);
 void				test_get_map(t_fdf **s);
 
+t_color				ft_color_pick(t_v_map cst, t_var_color vcol, t_fdf *strc);
 int					img_pixel_put(t_env *e, int x, int y, int color);
 int					ft_col(t_trace t, t_env *e);
+t_color				ft_degradee(t_color c1, t_color c2, int p, int ref_prog);
+t_color				ft_inttocolstrc(int color);
 void				new_img(t_env *e);
 
 t_env		fdf_mlx(t_env *env);

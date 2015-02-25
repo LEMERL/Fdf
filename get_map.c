@@ -27,7 +27,7 @@ t_fdf	**fdf_mapping(int argc, const char *argv[])
 		ft_putendl_fd("Error : Program abort", 2);
 		exit(0);
 	}
-	test_get_map(s);
+//	test_get_map(s);
 	return (s);
 }
 
