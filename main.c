@@ -49,7 +49,10 @@ t_env	*fdf_strc_ini(t_env *e, int argc, const char **argv)
 	e->img = NULL;
 	e->proj_type = 0;
 	e->var_color.degradee = 20;
-	e->var_color.col_flag = 0;
+	e->var_color.col_flag = 3;
+	e->var_color.col_high = ft_inttocolstrc(0xFF0000);
+	e->var_color.col_ground = ft_inttocolstrc(0x00FF00);
+	e->var_color.col_underground = ft_inttocolstrc(0x0000FF);
 	e->v_map.win_x = 1000;
 	e->v_map.win_y = 1000;
 	e->v_map.ecart = -42;

@@ -60,6 +60,8 @@ t_trace	fdf_trace_initial_struct(t_fdf p1, t_fdf p2)
 	t.x2 = (int)p2.aff_x;
 	t.y1 = (int)p1.aff_y;
 	t.y2 = (int)p2.aff_y;
-	t.ref_prog = (((t.dx * t.dx) + (t.dy * t.dy)) / 4);
+	t.c1 = p1.aff_c;
+	t.c2 = p2.aff_c;
+	t.ref_prog = (((t.dx * t.dx) + (t.dy * t.dy)) / 16);
 	return (t);
 }

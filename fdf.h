@@ -6,7 +6,7 @@
 /*   By: scoudert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 15:52:21 by scoudert          #+#    #+#             */
-/*   Updated: 2015/02/13 14:30:59 by mgrimald         ###   ########.fr       */
+/*   Updated: 2015/03/05 15:01:23 by mgrimald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <string.h>
 # include <math.h>
 # include <mlx.h>
-# include "libft.h"
+# include "libft/includes/libft.h"
 
 
 typedef struct		s_v_map

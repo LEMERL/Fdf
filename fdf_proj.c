@@ -29,7 +29,7 @@ void	fdf_calcul_proj(t_fdf **s, t_env *env)
 		{
 			s[i][j].aff_x = s[i][j].aff_x - map->low_x;
 			s[i][j].aff_y = s[i][j].aff_y - map->low_y;
-			ft_color_pick(*map, env->var_color, &(s[i][j]));
+			s[i][j].aff_c = ft_color_pick(*map, env->var_color, &(s[i][j]));
 		}
 }
 

@@ -6,13 +6,13 @@
 #    By: scoudert <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/13 14:48:43 by scoudert          #+#    #+#              #
-#    Updated: 2015/02/12 22:40:28 by mgrimald         ###   ########.fr        #
+#    Updated: 2015/03/06 15:22:31 by mgrimald         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CFLAGS = -Wall -Wextra -Werror
 
-MLX = -L/usr/x11/lib -lmlx -lXext -lX11
+MLX = -L/minilibx_macos -lmlx -lXext -lX11 -framework OpenGL -framework AppKit
 
 DEBUG = $(CFLAGS) -g
 
