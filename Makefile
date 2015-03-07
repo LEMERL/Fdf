@@ -6,13 +6,13 @@
 #    By: scoudert <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/13 14:48:43 by scoudert          #+#    #+#              #
-#    Updated: 2015/03/06 15:22:31 by mgrimald         ###   ########.fr        #
+#    Updated: 2015/03/07 14:43:09 by mgrimald         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CFLAGS = -Wall -Wextra -Werror
 
-MLX = -L/minilibx_macos -lmlx -lXext -lX11 -framework OpenGL -framework AppKit
+MLX = -framework OpenGL -framework AppKit -lmlx
 
 DEBUG = $(CFLAGS) -g
 
@@ -43,19 +43,15 @@ all:
 	@make $(NAME)
 
 $(NAME): $(SRC)
-	@make -C libft/ fclean
 	@make -C libft/
-	@make -C minilibx_macos/ clean
-	@make -C minilibx_macos/
 	@echo "\033[32mCompile all \".c\"\033[0m"
-	@$(CC) $(CFLAGS) $(MLX) -c $(SRC) -I $(HEADER)
-	@$(CC) $(CFLAGS) $(MLX) -o $(NAME) $(OBJ) libft/libft.a
+	@$(CC) $(CFLAGS) -c $(SRC) -I $(HEADER)
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(MLX) libft/libft.a
 	@echo "\033[36mCreate fdf executable \033[0m"
 
 
 clean:
 	@make -C libft/ clean
-	@make -C minilibx_macos/ clean
 	@echo "\033[31mDelete all \".o\"\033[0m"
 	@$(RM) $(OBJ)
 
@@ -69,11 +65,9 @@ re: fclean all
 debug:
 	@make -C libft/ fclean
 	@make -C libft/ debug
-	@make -C minilibx_macos/ clean
-	@make -C minilibx_macos/
 	@echo "\033[32mCompile all \".c\" with debug flag\033[0m"
-	@$(CC) $(DEBUG) $(CFLAGS) $(MLX) -c $(SRC) -I $(HEADER)
-	@$(CC) $(DEBUG) $(CFLAGS) $(MLX) -o $(NAME) $(OBJ) libft/libft.a
+	@$(CC) $(DEBUG) $(CFLAGS) -c $(SRC) -I $(HEADER)
+	@$(CC) $(DEBUG) $(CFLAGS) -o $(NAME) $(OBJ) $(MLX) libft/libft.a
 	@echo "\033[36mCreate fdf\033[0m"
 
 mlx_free:

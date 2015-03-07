@@ -1,32 +1,33 @@
 #include "fdf.h"
+#include "keycode.h"
 
 int		key_hook(int keycode, t_env *e)
 {
 	(void)e;
 	printf("key: %d\n", keycode);
-	if (keycode == 65307)
+	if (keycode == KEY_ESCAPE)
 	{
 		ft_double_tab_del((void**)e->mapping);
 		mlx_destroy_image(e->mlx, e->img->ptr);
 		mlx_destroy_window(e->mlx, e->win);
 		exit(0);
 	}
-	if (keycode == 65451 || keycode == 61)
+	if (keycode == NUM_PAD_PLUS || keycode == KEY_PLUS)
 		e->v_map.ecart += 1;
-	if (keycode == 65453 || keycode == 45)
+	if (keycode == NUM_PAD_MOINS || keycode == KEY_MOINS)
 		e->v_map.ecart -= 1;
-	if (keycode == 65461)
+	if (keycode == NUM_PAD_5)
 	{
 		e->v_map.img_x = -4200;
 		e->v_map.img_y = -4200;
 	}
-	if (keycode == 65460)
+	if (keycode == NUM_PAD_6)
 		e->v_map.img_x += 5;
-	if (keycode == 65462)
+	if (keycode == NUM_PAD_4)
 		e->v_map.img_x -= 5;
-	if (keycode == 65458)
+	if (keycode == NUM_PAD_2)
 		e->v_map.img_y += 5;
-	if (keycode == 65464)
+	if (keycode == NUM_PAD_8)
 		e->v_map.img_y -= 5;
 	if (ft_restart(e) == -1)
 		exit(0);//ft_error;

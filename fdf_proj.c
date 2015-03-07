@@ -42,8 +42,8 @@ t_fdf	ft_proj_cal(t_fdf strc, t_env *e, int i, int j)
 	}
 	else if (strc.x >= 0)
 	{
-		strc.aff_x = strc.x + (75 * strc.z) / 100;
-		strc.aff_y = strc.y - ((75 * strc.z)) / 200;
+		strc.aff_x = 0.71 * (strc.x - strc.y) * -e->v_map.ecart;
+		strc.aff_y = (2 * strc.z - (strc.y + strc.x)) * 0.41 * -e->v_map.ecart;
 	}
 	if (strc.aff_x > e->v_map.max_x || (j == 0 && i == 0))
 		e->v_map.max_x = strc.aff_x;

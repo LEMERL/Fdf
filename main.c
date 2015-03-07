@@ -9,6 +9,7 @@ int		main(int argc, const char **argv)
 			return (-1);//ft_error("allocation failled")
 	if (ft_restart(&e) == -1)
 		return (-1);
+	mlx_do_key_autorepeatoff(e.mlx);
 	fdf_mlx(&e);
 	return (0);
 }
@@ -47,9 +48,9 @@ t_env	*fdf_strc_ini(t_env *e, int argc, const char **argv)
 	e->mlx = mlx_init();
 	e->win = NULL;
 	e->img = NULL;
-	e->proj_type = 0;
+	e->proj_type = 1;
 	e->var_color.degradee = 20;
-	e->var_color.col_flag = 3;
+	e->var_color.col_flag = 2;
 	e->var_color.col_high = ft_inttocolstrc(0xFF0000);
 	e->var_color.col_ground = ft_inttocolstrc(0x00FF00);
 	e->var_color.col_underground = ft_inttocolstrc(0x0000FF);
