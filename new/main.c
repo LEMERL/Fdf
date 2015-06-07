@@ -6,11 +6,18 @@
 /*   By: mgrimald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/27 17:45:22 by mgrimald          #+#    #+#             */
-/*   Updated: 2015/06/07 05:13:31 by mgrimald         ###   ########.fr       */
+/*   Updated: 2015/06/07 14:04:17 by mgrimald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+int		ft_col(t_trace t, t_env *e)
+{
+	(void)e;
+	(void)t;
+	return (0xFF0000);
+}
 
 void	*initialise_stuct(t_env *e, int argc, const char **argv)
 {
@@ -40,6 +47,7 @@ void	*initialise_stuct(t_env *e, int argc, const char **argv)
 	return (e);
 }
 
+int		start(t_env *e);
 
 int			main(int argc, const char **argv)
 {
@@ -47,37 +55,34 @@ int			main(int argc, const char **argv)
 
 	if (initialise_stuct(&e, argc, argv) == NULL)
 		return (-1);
-	if (ft_restart(&e) == -1)
+	if (start(&e) == -1)
 		return (-1);
 	return (0);
 }
 
 int		ft_restart(t_env *e)
 {
-	static int		x = 0;
-	static int		y = 0;
-
-	if (x != e->v_map.win_x || y != e->v_map.win_y)
-	{
-		x = e->v_map.win_x;
-		y = e->v_map.win_y;
-		if (e->win != NULL)
-			mlx_destroy_window(e->mlx, e->win);
-		if ((e->win = mlx_new_window(e->mlx, x, y, "fdf")) == NULL)
-			return (-1);//ft_error("allocation failled")
-	}
-	test_get_map(e->mapping, e);
-	fdf_calcul_proj(e->mapping, e);
 	new_img(e);
-/*	if (e->v_map.img_x == -4200 || e->v_map.img_y == -4200)
-	{
-		e->v_map.img_x = (e->v_map.win_x - e->v_map.max_x + e->v_map.low_x) / 2;
-		e->v_map.img_y = (e->v_map.win_y - e->v_map.max_y + e->v_map.low_y) / 2;
-	}*/
+	fdf_calcul_proj(e->mapping, e);
 	fdf_trace(e->mapping, e);
 	mlx_clear_window(e->mlx, e->win);
-	mlx_put_image_to_window(e->mlx, e->win, e->img->ptr, 0, 0);
-//			e->v_map.img_x, e->v_map.img_y);
+	mlx_put_image_to_window(e->mlx, e->win, e->img->ptr, 1, 1);
 	fdf_mlx(e);
+	return (1);
+}
+
+int		start(t_env *e)
+{
+	int		x;
+	int		y;
+
+	x = e->v_map.win_x;
+	y = e->v_map.win_y;
+	if (e->win != NULL)
+		mlx_destroy_window(e->mlx, e->win);
+	if ((e->win = mlx_new_window(e->mlx, x, y, "fdf")) == NULL)
+		return (-1);//ft_error("allocation failled")
+	new_img(e);
+	ft_restart(e);
 	return (1);
 }

@@ -28,9 +28,9 @@ void	fdf_calcul_proj(t_fdf **s, t_env *env)
 	{
 		while (s[++i] && ((j = -1) + 2))
 			while (s[i][++j].x >= 0)
-			{
 				ft_proj_cal(s[i] + j, env);
-				if ((i == 0 && j == 0) || env->v_map.low_x > s[i][j].iso_x)
+//			{
+/*				if ((i == 0 && j == 0) || env->v_map.low_x > s[i][j].iso_x)
 					env->v_map.low_x = s[i][j].iso_x;
 				if ((i == 0 && j == 0) || env->v_map.low_y > s[i][j].iso_y)
 					env->v_map.low_y = s[i][j].iso_y;
@@ -42,13 +42,14 @@ void	fdf_calcul_proj(t_fdf **s, t_env *env)
 		env->v_map.ecart = ((env->v_map.max_x + env->v_map.max_y) -
 				(env->v_map.low_x + env->v_map.low_y)) /
 			((env->v_map.win_x + env->v_map.win_y) * 130);
-		env->v_map.win_x = 0;
-		env->v_map.win_y = 0;
+*/		env->v_map.img_x = 0;
+		env->v_map.img_y = 0;
+		env->v_map.ecart = 20;
 	}
 	if (env->v_map.ecart >= 100)
 		env->v_map.ecart = 100;
-	if (env->v_map.ecart <= 0)
-		env->v_map.ecart = 1;
+	if (env->v_map.ecart <= 2)
+		env->v_map.ecart = 2;
 	i = -1;
 	while (s[++i] && ((j = -1) + 2))
 		while (s[i][++j].x >= 0)

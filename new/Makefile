@@ -6,17 +6,19 @@
 #    By: scoudert <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/13 14:48:43 by scoudert          #+#    #+#              #
-#    Updated: 2015/06/07 05:44:12 by mgrimald         ###   ########.fr        #
+#    Updated: 2015/06/07 12:56:40 by mgrimald         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS = -Wall -Wextra -Werror -g
-
-MLX = -framework OpenGL -framework AppKit -L mlx/minilibx_macos/ -lmlx
+CFLAGS = -Wall -Wextra -Werror
 
 DEBUG = $(CFLAGS) -g
 
 NAME = fdf
+
+MLX_DIR = mlx/minilibx_macos/
+
+MLX = -L$(MLX_DIR) -framework OpenGL -framework AppKit -lmlx
 
 CC = gcc
 
@@ -28,7 +30,6 @@ SRC = main.c \
 	  ft_strtofdf.c \
 	  fdf_trace_all.c \
 	  test_get_map.c \
-	  fdf_col.c \
 	  fdf_proj.c
 
 HEADER = ./libft/includes/
@@ -42,37 +43,25 @@ RM = rm -f
 all:
 	@make $(NAME)
 
-$(NAME): $(SRC)
+%.o: %.c
+	$(CC) $(CFLAGS) -c $<
+
+$(NAME): $(OBJ)
 	@make -C libft/
+	@make -C $(MLX_DIR)
 	@echo "[fdf]\033[32mCompile all \".c\"\033[0m"
-	@$(CC) $(CFLAGS) -c $(SRC)
-	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(MLX) libft/libft.a
+	$(CC) $(CFLAGS) -o $(NAME) $(MLX_DIR)/libmlx.a $(OBJ) mlx/minilibx_macos/libmlx.a $(MLX) libft/libft.a
 	@echo "[fdf]\033[36mCreate $(NAME) executable \033[0m"
 
 clean:
 	@make -C libft/ clean
 	@echo "[fdf]\033[31mDelete all \".o\"\033[0m"
-	@$(RM) $(OBJ)
+	$(RM) $(OBJ)
 
 fclean: clean
 	@make -C libft/ fclean
+	@make -C $(MLX_DIR) clean
 	@echo "[fdf]\033[31mDelete $(NAME) executable\033[0m"
 	@$(RM) $(NAME)
 
 re: fclean all
-
-debug:
-	@make -C libft/ fclean
-	@make -C libft/ debug
-	@echo "\033[32mCompile all \".c\" with debug flag\033[0m"
-	@$(CC) $(DEBUG) $(CFLAGS) -c $(SRC
-	@$(CC) $(DEBUG) $(CFLAGS) -o $(NAME) $(OBJ) $(MLX) libft/libft.a
-	@echo "[fdf]\033[36mCreate $(NAME) (debug version)\033[0m"
-
-mlx_free:
-	@make -C libft/ fclean
-	@make -C libft/ debug
-	@echo -e "\033[32mCompile all \".c\" with debug flag\033[0m"
-	@$(CC) $(DEBUG) -c $(SRC) -I $(HEADER)
-	@$(CC) $(DEBUG) -o $(NAME) $(OBJ) libft/libft.a
-	@echo -e "[fdf]\033[36mCreate $(NAME) (debug version)(mlx not linked)\033[0m"
