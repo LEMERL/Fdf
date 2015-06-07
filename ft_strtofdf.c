@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strtoint.c                                      :+:      :+:    :+:   */
+/*   ft_strtofdf.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: scoudert <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: scoudert <scoudert@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/13 14:36:22 by scoudert          #+#    #+#             */
-/*   Updated: 2015/02/13 14:23:17 by mgrimald         ###   ########.fr       */
+/*   Updated: 2015/03/30 11:10:48 by scoudert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,29 @@ static void		fill_struct(int y, int x, char *prev_z, t_fdf *res, int color)
 	*res = str;
 }
 
+int				wrong_value(char *s)
+{
+	int		i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (ft_isdigit(s[i]) == 0 && s[i] != '-' && s[i] != ',' &&
+			(s[i] != '0' && (s[i + 1] != 'X' || s[i + 1] != 'x')) &&
+			((s[i] != 'x' || s[i] != 'X') && s[i - 1] != '0')
+			&& ft_hexatodeci(s) == -42)
+		{
+			ft_putstr_fd("Error : Wrong value \"", 2);
+			ft_putchar_fd(s[i], 2);
+			ft_putendl_fd("\" in map. Program abort.", 2);
+			return (-1);
+		}
+		else
+			i++;
+	}
+	return (0);
+}
+
 t_fdf			*ft_strtofdf(const char *s, int line, int i)
 {
 	t_fdf		*result;
@@ -66,6 +89,10 @@ t_fdf			*ft_strtofdf(const char *s, int line, int i)
 	split = ft_strsplit(s, ' ');
 	while (i < words && split[i])
 	{
+		if (wrong_value(split[i]) < 0)
+		{
+			exit (-1);
+		}
 		color[i] = ft_hexatodeci(split[i]);
 		i++;
 	}
