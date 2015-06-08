@@ -6,7 +6,7 @@
 ** Transforme le fichier recu en parametre par file descriptor en int **tab
 */
 
-t_fdf	**fdf_mapping(int argc, const char *argv[])
+t_fdf		**fdf_mapping(int argc, const char *argv[])
 {
 	int		fd;
 	t_fdf	**s;
@@ -22,28 +22,26 @@ t_fdf	**fdf_mapping(int argc, const char *argv[])
 		ft_putendl_fd("Map error : Cannot read or find map", 2);
 		exit(0);
 	}
-	if ((s = get_map(fd)) == NULL)
+	if ((s = get_map(fd, 0)) == NULL)
 	{
 		ft_putendl_fd("Error : Program abort", 2);
 		exit(0);
 	}
-	test_get_map(s, NULL);
 	return (s);
 }
 
-t_fdf		**get_map(int fd)
+t_fdf		**get_map(int fd, int j)
 {
 	char	*map;
 	t_list	*array;
-	int		j;
 	t_fdf	**res;
 	t_list	*ptr_array;
 
-	j = 0;
 	array = NULL;
 	while (get_next_line(fd, &map) > 0)
 	{
-		ft_lstaddend(map, ft_strlen(map), &array);
+		if (map[0] != '\0')
+			ft_lstaddend(map, ft_strlen(map), &array);
 		free(map);
 	}
 	ptr_array = array;

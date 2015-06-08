@@ -1,6 +1,6 @@
 #include "fdf.h"
 
-void	fdf_trace(t_fdf **s, t_env *env)
+void			fdf_trace(t_fdf **s, t_env *env)
 {
 	int		i;
 	int		j;
@@ -27,12 +27,11 @@ void	fdf_trace(t_fdf **s, t_env *env)
 	}
 }
 
-void	ft_trace_segm(t_fdf p1, t_fdf p2, t_env *env)
+void			ft_trace_segm(t_fdf p1, t_fdf p2, t_env *env)
 {
 	int			e;
 	t_trace		t;
 
-	//t.ref_prog = sqrt(((t.dx * t.dx) + (t.dy * t.dy)) / 4);
 	t = fdf_trace_initial_struct(p1, p2);
 	if (t.ref_prog == 0)
 		t.ref_prog = 1;
@@ -47,11 +46,10 @@ void	ft_trace_segm(t_fdf p1, t_fdf p2, t_env *env)
 		trace_3(t, e, env);
 	else if (t.dx == 0 || t.dy == 0)
 		trace_0(t, env);
-//	mlx_pixel_put(env->mlx, env->win, t.x2, t.y2, t.c2.color);
 	img_pixel_put(env, t.x2, t.y2, t.c2.color);
 }
 
-t_trace	fdf_trace_initial_struct(t_fdf p1, t_fdf p2)
+t_trace			fdf_trace_initial_struct(t_fdf p1, t_fdf p2)
 {
 	t_trace		t;
 

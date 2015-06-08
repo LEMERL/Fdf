@@ -1,6 +1,6 @@
 #include "fdf.h"
 
-int		ft_col(t_trace t, t_env *e)
+int				ft_col(t_trace t, t_env *e)
 {
 	int			p;
 	t_color		verif;
@@ -8,16 +8,13 @@ int		ft_col(t_trace t, t_env *e)
 
 	vcol = e->var_color;
 	p = (((t.x2 - t.x1) * (t.x2 - t.x1)) + ((t.y2 - t.y1) * (t.y2 - t.y1)));
-//	if (vcol.degradee > 0)
-		verif = ft_degradee(t.c1, t.c2, p, t.ref_prog);
-//	else
-//		verif.color = t.c1.color;
+	verif = ft_degradee(t.c1, t.c2, p, t.ref_prog);
 	if (verif.color < 0 || verif.color >= 0x1000000)
 		verif.color = 0xFFFFFF;
 	return (verif.color);
 }
 
-t_color	ft_inttocolstrc(int color)
+t_color			ft_inttocolstrc(int color)
 {
 	t_color		strc;
 
@@ -28,10 +25,10 @@ t_color	ft_inttocolstrc(int color)
 	return (strc);
 }
 
-t_color	ft_degradee(t_color c1, t_color c2, int p, int ref_prog)
+t_color			ft_degradee(t_color c1, t_color c2, int p, int ref_prog)
 {
 	t_color		verif;
-	int 		prog;
+	int			prog;
 	int			v;
 
 	v = 2;
@@ -43,10 +40,6 @@ t_color	ft_degradee(t_color c1, t_color c2, int p, int ref_prog)
 		if ((((p * 255) / ref_prog) % v) > (v / 2))
 			prog = prog + v;
 	}
-//	if (prog >= 255 || p > ref_prog)
-//		return (c1);
-//	if (prog <= 0 || p <= 0)
-//		return (c2);
 	verif.red = ((c1.red * prog + c2.red * (255 - prog)) * 256 * 256);
 	verif.green = (c1.green * prog + c2.green * (255 - prog)) * 256;
 	verif.blue = (c1.blue * prog + c2.blue * (255 - prog));
@@ -61,7 +54,7 @@ t_color	ft_degradee(t_color c1, t_color c2, int p, int ref_prog)
 	return (verif);
 }
 
-t_color		ft_color_pick(t_v_map cst, t_var_color vcol, t_fdf *strc)
+t_color			ft_color_pick(t_v_map cst, t_var_color vcol, t_fdf *strc)
 {
 	strc->aff_c = ft_inttocolstrc(0xFFFFFF);
 	if (vcol.col_flag >= 2)

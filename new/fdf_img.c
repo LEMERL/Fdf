@@ -9,9 +9,7 @@ void			new_img(t_env *e)
 		free(e->img);
 	}
 	if ((e->img = (t_img*)malloc(sizeof(t_img))) == NULL)
-		exit(0);//ft_error;
-//	e->img->width = (e->v_map.max_x - e->v_map.low_y) + 1;
-//	e->img->height = (e->v_map.max_y - e->v_map.low_y) + 1;
+		exit(0);
 	e->img->width = e->v_map.win_x + 1;
 	e->img->height = e->v_map.win_y + 1;
 	e->img->ptr = mlx_new_image(e->mlx, e->img->width, e->img->height);
@@ -19,15 +17,12 @@ void			new_img(t_env *e)
 			&e->img->size_line, &e->img->endian);
 }
 
-//gerer l'endian
-
 int				img_pixel_put(t_env *e, int x, int y, int color)
 {
 	t_img	*img;
 	int		octets;
 	int		k;
 
-//	mlx_pixel_put(e->mlx, e->win, x, y, 0xff0000);
 	if (color < 0)
 		color = 0;
 	else if (color >= 0xffffff)

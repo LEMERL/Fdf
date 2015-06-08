@@ -19,6 +19,12 @@ int			ft_col(t_trace t, t_env *e)
 	return (0xFF0000);
 }
 
+void		ft_exit(int n)
+{
+	wait(NULL);
+	exit(n);
+}
+
 void		*initialise_stuct(t_env *e, int argc, const char **argv)
 {
 	e->mapping = fdf_mapping(argc, argv);
@@ -43,20 +49,42 @@ void		*initialise_stuct(t_env *e, int argc, const char **argv)
 	e->v_map.cst = 74;
 	return (e);
 }
-
-int			main(int argc, const char **argv)
+int	signal_handler(int signu)
 {
+
+//wait4(nonblockant)
+}
+int		check_fork(int argc, char **argv)
+{
+	t_pid	current_pid;
 	t_env	e;
 	int		x;
 	int		y;
 
-	if (initialise_stuct(&e, argc, argv) == NULL)
+	current_pid = 1;
+	if (argc > 2)
+		current_pid = fork();
+	if (current_pid == -1)
+		exit(-1);
+	else if (current_pid == 0)//in forked process (child)
+		check_fork(argc - 1, argv + 1);
+	else
+	{
+		signal(sigchild, signal_handler)
+		if (initialise_stuct(&e, argc, argv) == NULL)
+			return (-1);
+		x = e.v_map.win_x;
+		y = e.v_map.win_y;
+		if ((e.win = mlx_new_window(e.mlx, x, y, "fdf")) == NULL)
+			return (-1);
+		ft_restart(&e);
+	}
+}
+
+int			main(int argc, const char **argv)
+{
+	if (check_fork(argc, argv) == -1)
 		return (-1);
-	x = e.v_map.win_x;
-	y = e.v_map.win_y;
-	if ((e.win = mlx_new_window(e.mlx, x, y, "fdf")) == NULL)
-		return (-1);
-	ft_restart(&e);
 	return (0);
 }
 
