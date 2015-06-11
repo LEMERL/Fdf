@@ -1,13 +1,39 @@
-#
-#
-#
-#
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_hexatodeci.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mgrimald <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/06/11 21:56:28 by mgrimald          #+#    #+#             */
+/*   Updated: 2015/06/11 21:58:34 by mgrimald         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "includes/libft.h"
 
-int		ft_hexatodeci(char *str)
+static int	calc_hexa(char *ptr, int value, char *t)
 {
-	int		value;
+	ptr++;
+	while (((*ptr <= '9') && (*ptr >= '0'))
+			|| ((*ptr >= 'A') && (*ptr <= 'Z'))
+			|| ((*ptr >= 'a') && (*ptr <= 'z')))
+	{
+		value = value * 16;
+		if (*ptr >= '0' && *ptr <= '9')
+			value = (value + *ptr) - '0';
+		if (*ptr >= 'A' && *ptr <= 'Z')
+			value = ((value + *ptr) - 'A') + 10;
+		if (*ptr >= 'a' && *ptr <= 'z')
+			value = ((value + *ptr) - 'a') + 10;
+		ptr++;
+	}
+	free(t);
+	return (value);
+}
+
+int			ft_hexatodeci(char *str)
+{
 	char	*ptr;
 	char	*p;
 
@@ -18,25 +44,7 @@ int		ft_hexatodeci(char *str)
 		if (*(ptr++) == '0')
 		{
 			if (*ptr == 'X' || *ptr == 'x')
-			{
-				ptr++;
-				value = 0;
-				while (((*ptr <= '9') && (*ptr >= '0'))
-						|| ((*ptr >= 'A') && (*ptr <= 'Z'))
-						|| ((*ptr >= 'a') && (*ptr <= 'z')))
-				{
-					value = value * 16;
-					if (*ptr >= '0' && *ptr <= '9')
-						value = (value + *ptr) - '0';
-					if (*ptr >= 'A' && *ptr <= 'Z')
-						value = ((value + *ptr) - 'A') + 10;
-					if (*ptr >= 'a' && *ptr <= 'z')
-						value = ((value + *ptr) - 'a') + 10;
-					ptr++;
-				}
-				free(p);
-				return (value);
-			}
+				return (calc_hexa(ptr, 0, p));
 			else
 				ptr++;
 		}

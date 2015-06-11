@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf_trace_all.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mgrimald <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2015/06/11 21:43:53 by mgrimald          #+#    #+#             */
+/*   Updated: 2015/06/11 21:50:25 by mgrimald         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
 int				fdf_trace_one(t_fdf **s, t_env *env)
@@ -6,17 +18,19 @@ int				fdf_trace_one(t_fdf **s, t_env *env)
 	int				n;
 	int				m;
 
-	i = i + 16 * 256 + 8 * 256;
 	if (((s[0][0].x < 0) || (s[0][1].x < 0)) && (s[1] == NULL || s[1][0].x < 0))
 	{
-		if (s[0][0].x >= 0)
-		{
-			n = -1 - env->v_map.ecart / 2;
-			m = n;
-			while (++n < env->v_map.ecart / 2 && (m = -env->v_map.ecart / 2) -3)
+		if (env->v_map.ecart <= 0)
+			env->v_map.ecart = 2;
+		n = -1 - env->v_map.ecart / 2;
+		m = n;
+		if (s[0][0].x >= 0 && (i = i + 16 * 256 + 8 * 256))
+			while (++n < env->v_map.ecart / 2 && (m = -env->v_map.ecart / 2))
+			{
 				while (++m < env->v_map.ecart / 2)
-					img_pixel_put(env, 500 + n, 500 + m, i);
-		}
+					img_pixel_put(env, 500 + n + env->v_map.img_x,
+							500 + m + env->v_map.img_y, i);
+			}
 		else
 		{
 			ft_putendl_fd("ERROR: Empty map", 2);
