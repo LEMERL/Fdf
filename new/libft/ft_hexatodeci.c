@@ -11,7 +11,6 @@ int		ft_hexatodeci(char *str)
 	char	*ptr;
 	char	*p;
 
-	value = -42;
 	ptr = ft_strtrim(str);
 	p = ptr;
 	while (*ptr)
@@ -43,5 +42,5 @@ int		ft_hexatodeci(char *str)
 		}
 	}
 	free(p);
-	return (value);
+	return (-42);
 }

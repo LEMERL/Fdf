@@ -6,7 +6,7 @@
 /*   By: scoudert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/13 14:36:22 by scoudert          #+#    #+#             */
-/*   Updated: 2015/06/11 13:34:44 by mgrimald         ###   ########.fr       */
+/*   Updated: 2015/06/11 20:55:45 by mgrimald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 ** en un tableau d'int.
 */
 
-static void		free_all(char **split, t_fdf *result, int words)
+static void		clear_all(char **split, t_fdf *result, int words)
 {
 	int			i;
 
@@ -41,18 +41,29 @@ static void		fill_struct(int y, int x, char *prev_z, t_fdf *res)
 	str = *res;
 	str.x = x;
 	str.y = y;
+	if (ft_atoi_1(prev_z) == -1 && ft_atoi_2(prev_z) == 1)
+	{
+		ft_putstr_fd("Value: \033[31m", 2);
+		ft_putstr_fd(prev_z, 2);
+		ft_putendl_fd("\033[0m cannot be stocked in an integer", 2);
+		exit(1);
+	}
 	str.z = ft_atoi(prev_z);
-	str.color = res->tmp;
-	str.aff_c.color = -1;
-	str.aff_c.red = -1;
-	str.aff_c.blue = -1;
-	str.aff_c.green = -1;
+	while (*prev_z != '\0' && *prev_z != ',')
+		prev_z++;
+	str.color = -1;
+	if (*prev_z == ',')
+	{
+		str.color = ft_hexatodeci(prev_z + 1);
+		ft_putnbr(str.color);
+		ft_putendl("");
+	}
 	str.print_x = 0;
 	str.print_y = 0;
 	*res = str;
 }
 
-int				wrong_value(char *s)
+int				test_wrong_value(char *s)
 {
 	int			i;
 
@@ -64,13 +75,12 @@ int				wrong_value(char *s)
 			((s[i] != 'x' || s[i] != 'X') && s[i - 1] != '0')
 			&& ft_hexatodeci(s) == -42)
 		{
-			ft_putstr_fd("Error : Wrong value \"", 2);
+			ft_putstr_fd("Error : Wrong value \"\033[31m", 2);
 			ft_putchar_fd(s[i], 2);
-			ft_putendl_fd("\" in map. Program abort.", 2);
-			return (-1);
+			ft_putendl_fd("\033[0m\" in map. Program abort.", 2);
+			exit(-1);
 		}
-		else
-			i++;
+		i++;
 	}
 	return (0);
 }
@@ -86,18 +96,13 @@ t_fdf			*ft_strtofdf(const char *s, int line, int i)
 		return (NULL);
 	split = ft_strsplit(s, ' ');
 	while (i < words && split[i])
-	{
-		if (wrong_value(split[i]) < 0)
-			exit (-1);
-		result->tmp = ft_hexatodeci(split[i]);
-		i++;
-	}
+		test_wrong_value(split[i++]);
 	i = 0;
 	while (i < words && split[i])
 	{
 		fill_struct(line, i, split[i], result + i);
 		i++;
 	}
-	free_all(split, result, words);
+	clear_all(split, result, words);
 	return (result);
 }

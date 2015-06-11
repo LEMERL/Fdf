@@ -6,7 +6,7 @@
 /*   By: mgrimald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/10 16:11:11 by mgrimald          #+#    #+#             */
-/*   Updated: 2015/06/06 22:32:40 by mgrimald         ###   ########.fr       */
+/*   Updated: 2015/06/11 18:38:25 by mgrimald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # include <stdlib.h>
 # include <unistd.h>
 # define BUFF_SIZE 1
-
 
 void				**ft_tabnew(size_t size);
 void				ft_double_tab_del(void **tab);
@@ -75,6 +74,8 @@ int					ft_isspace(int c);
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 int					ft_atoi(const char *str);
+int					ft_atoi_1(const char *str);
+int					ft_atoi_2(const char *str);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 
 size_t				ft_strlen(const char *str);
@@ -102,6 +103,6 @@ int					ft_lstcountbytes(t_list *lst);
 void				del(void *content, size_t content_size);
 int					get_next_line(int fd, char **line);
 int					countelem(t_list *lst);
-int					ft_hexatodeci(char *);
+int					ft_hexatodeci(char *str);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: scoudert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 15:52:21 by scoudert          #+#    #+#             */
-/*   Updated: 2015/06/11 17:04:30 by mgrimald         ###   ########.fr       */
+/*   Updated: 2015/06/11 18:58:26 by mgrimald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ typedef struct		s_trace
 	int				y2;
 	int				dx;
 	int				dy;
-	t_color			c1;
-	t_color			c2;
+	int				c1;
+	int				c2;
 	int				z1;
 	int				z2;
 	int				ref_prog;

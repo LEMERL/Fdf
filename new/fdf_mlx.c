@@ -15,15 +15,15 @@ void	key_hook3(t_env *e, int keycode)
 	else if (keycode == KEY_3)
 		e->v_map.ground = 2;
 	else if (keycode == KEY_4)
-		e->v_map.underground = 0;
-	else if (keycode == KEY_5)
-		e->v_map.underground = 1;
-	else if (keycode == KEY_6)
-		e->v_map.underground = 2;
-	else if (keycode == KEY_7)
 		e->v_map.high = 0;
-	else if (keycode == KEY_8)
+	else if (keycode == KEY_5)
 		e->v_map.high = 1;
+	else if (keycode == KEY_6)
+		e->v_map.high = 2;
+	else if (keycode == KEY_7)
+		e->v_map.underground = 0;
+	else if (keycode == KEY_8)
+		e->v_map.underground = 1;
 	set_color(e, e->v_map.high, e->v_map.ground, e->v_map.underground);
 }
 

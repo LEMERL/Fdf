@@ -6,7 +6,7 @@
 #    By: mgrimald <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2014/11/13 16:10:00 by mgrimald          #+#    #+#              #
-#    Updated: 2015/06/11 13:15:39 by mgrimald         ###   ########.fr        #
+#    Updated: 2015/06/11 17:48:27 by mgrimald         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ ft_lstaddend.c ft_lstcountbytes.c del.c ft_itoa.c ft_lstiter.c ft_lstmap.c \
 ft_lstcountelements.c ft_putnbr.c ft_strlen.c ft_strnstr.c ft_tolower.c \
 ft_isprint.c ft_strcpy.c ft_lstadd.c ft_put_error.c ft_isspace.c \
 get_next_line.c ft_hexatodeci.c ft_double_tab_del.c ft_count_word.c \
-ft_tab_divers.c
+ft_tab_divers.c ft_atoi_i.c
 
 OBJ = $(SRC:.c=.o)
 

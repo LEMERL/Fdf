@@ -6,7 +6,7 @@
 /*   By: mgrimald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/27 17:45:22 by mgrimald          #+#    #+#             */
-/*   Updated: 2015/06/11 17:01:21 by mgrimald         ###   ########.fr       */
+/*   Updated: 2015/06/11 19:45:55 by mgrimald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ int			ft_col(t_trace t, t_env *e)
 {
 	(void)e;
 	(void)t;
-	if (t.c1.color >= 0)
-		return (t.c1.color);
+	if (t.c1 > 0 && e->v_map.set == 0)
+		return (t.c1);
 	if (e->v_map.set != 0)
 	{
 		if (t.z1 == 0 && t.z2 == 0)
@@ -30,8 +30,6 @@ int			ft_col(t_trace t, t_env *e)
 			return (e->var_color.col_underground.color);
 		if ((t.z1 < 0 && t.z2 == 0) || (t.z1 == 0 && t.z2 < 0))
 			return (e->var_color.col_ground_underground.color);
-//	if (t.z1 > 0)
-//	if (t.z1 < 0)
 		return (0x333333);
 	}
 	else
@@ -49,8 +47,8 @@ void		set_color(t_env *e, int high, int ground, int underground)
 	}
 	else if (high == 2)
 	{
-		e->var_color.col_high.color = 0xad4c4c;
-		e->var_color.col_ground_high.color = 0x843065;
+		e->var_color.col_high.color = 0x6a00c3;
+		e->var_color.col_ground_high.color = 0x903080;
 	}
 	e->var_color.col_ground.color = 0xFFFF00;
 	if (ground == 1)

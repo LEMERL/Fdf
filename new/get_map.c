@@ -14,7 +14,7 @@ t_fdf		**fdf_mapping(int argc, const char *argv[])
 	fd = 0;
 	if (argc != 2)
 	{
-		ft_putendl_fd("Map error : Please enter a valid map name", 2);
+		ft_putendl_fd("Map error : Only one map at a time", 2);
 		exit(0);
 	}
 	if ((fd = open(argv[1], O_RDONLY)) < 0)
@@ -25,6 +25,11 @@ t_fdf		**fdf_mapping(int argc, const char *argv[])
 	if ((s = get_map(fd, 0)) == NULL)
 	{
 		ft_putendl_fd("Error : Program abort", 2);
+		exit(0);
+	}
+	if (s == NULL || *s == NULL)
+	{
+		ft_putendl_fd("Error : Empty map", 2);
 		exit(0);
 	}
 	return (s);
