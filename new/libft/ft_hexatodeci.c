@@ -8,32 +8,40 @@
 int		ft_hexatodeci(char *str)
 {
 	int		value;
+	char	*ptr;
+	char	*p;
 
 	value = -42;
-	str = ft_strtrim(str);
-	while (*str)
+	ptr = ft_strtrim(str);
+	p = ptr;
+	while (*ptr)
 	{
-		if (*str == '0' && (*(++str) == 'X' || *str == 'x'))
+		if (*(ptr++) == '0')
 		{
-			str++;
-			value = 0;
-			while (((*str <= '9') && (*str >= '0'))
-					|| ((*str >= 'A') && (*str <= 'Z'))
-					|| ((*str >= 'a') && (*str <= 'z')))
+			if (*ptr == 'X' || *ptr == 'x')
 			{
-				value = value * 16;
-				if (*str >= '0' && *str <= '9')
-					value = (value + *str) - '0';
-				if (*str >= 'A' && *str <= 'Z')
-					value = ((value + *str) - 'A') + 10;
-				if (*str >= 'a' && *str <= 'z')
-					value = ((value + *str) - 'a') + 10;
-				str++;
+				ptr++;
+				value = 0;
+				while (((*ptr <= '9') && (*ptr >= '0'))
+						|| ((*ptr >= 'A') && (*ptr <= 'Z'))
+						|| ((*ptr >= 'a') && (*ptr <= 'z')))
+				{
+					value = value * 16;
+					if (*ptr >= '0' && *ptr <= '9')
+						value = (value + *ptr) - '0';
+					if (*ptr >= 'A' && *ptr <= 'Z')
+						value = ((value + *ptr) - 'A') + 10;
+					if (*ptr >= 'a' && *ptr <= 'z')
+						value = ((value + *ptr) - 'a') + 10;
+					ptr++;
+				}
+				free(p);
+				return (value);
 			}
-			return (value);
+			else
+				ptr++;
 		}
-		else
-			str++;
 	}
+	free(p);
 	return (value);
 }

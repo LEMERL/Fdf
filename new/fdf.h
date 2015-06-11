@@ -6,7 +6,7 @@
 /*   By: scoudert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/19 15:52:21 by scoudert          #+#    #+#             */
-/*   Updated: 2015/06/07 02:04:12 by mgrimald         ###   ########.fr       */
+/*   Updated: 2015/06/11 17:04:30 by mgrimald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,6 @@
 
 typedef struct		s_v_map
 {
-	float			max_x;
-	float			low_x;
-	float			max_y;
-	float			low_y;
-	float			max_z;
-	float			low_z;
 	int				ecart;
 	int				cst;
 	int				cp;
@@ -36,6 +30,10 @@ typedef struct		s_v_map
 	int				win_y;
 	int				img_x;
 	int				img_y;
+	int				set;
+	int				ground;
+	int				underground;
+	int				high;
 }					t_v_map;
 
 typedef struct		s_color
@@ -51,7 +49,9 @@ typedef struct		s_var_color
 	int				col_flag;
 	int				degradee;
 	t_color			col_underground;
+	t_color			col_ground_underground;
 	t_color			col_ground;
+	t_color			col_ground_high;
 	t_color			col_high;
 }					t_var_color;
 
@@ -81,6 +81,8 @@ typedef struct		s_trace
 	int				dy;
 	t_color			c1;
 	t_color			c2;
+	int				z1;
+	int				z2;
 	int				ref_prog;
 }					t_trace;
 
@@ -106,6 +108,7 @@ typedef struct		s_env
 	int				proj_type;
 }					t_env;
 
+void				set_color(t_env *e, int high, int ground, int underground);
 t_env				*fdf_strc_ini(t_env *e, int argc, const char **argv);
 int					ft_restart(t_env *e);
 t_fdf				**fdf_mapping(int argc, const char *argv[]);

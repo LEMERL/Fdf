@@ -6,7 +6,7 @@
 /*   By: mgrimald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/06 10:24:26 by mgrimald          #+#    #+#             */
-/*   Updated: 2014/11/13 17:27:32 by mgrimald         ###   ########.fr       */
+/*   Updated: 2015/06/11 13:16:55 by mgrimald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strdup(const char *s)
 	int		i;
 
 	i = ft_strlen(s);
-	newstr = malloc(i * sizeof(char));
+	newstr = ft_strnew(i * sizeof(char));
 	if (newstr == NULL)
 	{
 		return (NULL);

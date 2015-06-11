@@ -6,7 +6,7 @@
 /*   By: mgrimald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2014/11/12 10:15:47 by mgrimald          #+#    #+#             */
-/*   Updated: 2015/06/05 16:30:08 by mgrimald         ###   ########.fr       */
+/*   Updated: 2015/06/11 13:17:20 by mgrimald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 	ptr = NULL;
 	if (s != NULL && len > start)
 	{
-		ptr = malloc((len + 1));
+		ptr = ft_strnew((len + 1));
 		if (ptr == NULL)
 			return (NULL);
 		ptr[len + 1] = '\0';

@@ -6,7 +6,7 @@
 #    By: scoudert <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/01/13 14:48:43 by scoudert          #+#    #+#              #
-#    Updated: 2015/06/08 16:33:32 by scoudert         ###   ########.fr        #
+#    Updated: 2015/06/11 14:08:26 by mgrimald         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,10 +24,10 @@ CC = gcc
 
 SRC = main.c \
 	  get_map.c \
+	  ft_strtofdf.c \
 	  fdf_mlx.c \
 	  fdf_img.c \
 	  fdf_tracer.c \
-	  ft_strtofdf.c \
 	  fdf_trace_all.c \
 	  test_get_map.c \
 	  fdf_proj.c
@@ -43,14 +43,11 @@ RM = rm -f
 all:
 	@make $(NAME)
 
-%.o: %.c
-	$(CC) $(CFLAGS) -c $<
-
-$(NAME): $(OBJ)
+$(NAME): $(SRC)
 	@make -C libft/
 	@make -C $(MLX_DIR)
 	@echo "[fdf]\033[32mCompile all \".c\"\033[0m"
-	$(CC) $(CFLAGS) -o $(NAME) $(MLX_DIR)/libmlx.a $(OBJ) mlx/minilibx_macos/libmlx.a $(MLX) libft/libft.a
+	$(CC) $(CFLAGS) $(SRC) -o $(NAME) $(MLX_DIR)/libmlx.a mlx/minilibx_macos/libmlx.a $(MLX) libft/libft.a
 	@echo "[fdf]\033[36mCreate $(NAME) executable \033[0m"
 
 clean:

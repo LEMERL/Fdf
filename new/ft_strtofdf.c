@@ -6,7 +6,7 @@
 /*   By: scoudert <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/01/13 14:36:22 by scoudert          #+#    #+#             */
-/*   Updated: 2015/06/06 19:19:36 by mgrimald         ###   ########.fr       */
+/*   Updated: 2015/06/11 13:34:44 by mgrimald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,11 @@ static void		free_all(char **split, t_fdf *result, int words)
 	while (split[i])
 	{
 		free(split[i]);
+		split[i] = NULL;
 		i++;
 	}
 	free(split);
+	split = NULL;
 }
 
 static void		fill_struct(int y, int x, char *prev_z, t_fdf *res)
