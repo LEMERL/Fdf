@@ -6,11 +6,11 @@
 #    By: mgrimald <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/06/11 22:05:57 by mgrimald          #+#    #+#              #
-#    Updated: 2015/06/11 22:07:59 by mgrimald         ###   ########.fr        #
+#    Updated: 2015/06/12 09:40:30 by mgrimald         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CFLAGS = -Wall -Wextra -Werror
+FLAGS = -Wall -Wextra -Werror
 
 DEBUG = $(CFLAGS) -g
 
@@ -29,6 +29,7 @@ SRC = main.c \
 	  fdf_img.c \
 	  fdf_tracer.c \
 	  fdf_trace_all.c \
+	  forked.c \
 	  fdf_proj.c
 
 HEADER = ./libft/includes/
@@ -59,3 +60,6 @@ fclean:
 	@$(RM) $(NAME)
 
 re: fclean all
+
+norme:
+	norminette $(SRC) libft/includes/libft.h fdf.h keycode.h fdf.h ft_event.h

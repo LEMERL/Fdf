@@ -46,7 +46,7 @@ static void		fill_struct(int y, int x, char *prev_z, t_fdf *res)
 		ft_putstr_fd("Value: \033[31m", 2);
 		ft_putstr_fd(prev_z, 2);
 		ft_putendl_fd("\033[0m cannot be stocked in an integer", 2);
-		exit(1);
+		ft_wait_exit(1);
 	}
 	str.z = ft_atoi(prev_z);
 	while (*prev_z != '\0' && *prev_z != ',')
@@ -78,7 +78,7 @@ int				test_wrong_value(char *s)
 			ft_putstr_fd("Error : Wrong value \"\033[31m", 2);
 			ft_putchar_fd(s[i], 2);
 			ft_putendl_fd("\033[0m\" in map. Program abort.", 2);
-			exit(-1);
+			ft_wait_exit(-1);
 		}
 		i++;
 	}

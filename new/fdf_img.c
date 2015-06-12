@@ -21,7 +21,7 @@ void			new_img(t_env *e)
 		free(e->img);
 	}
 	if ((e->img = (t_img*)malloc(sizeof(t_img))) == NULL)
-		exit(0);
+		ft_wait_exit(0);
 	e->img->width = e->v_map.win_x + 1;
 	e->img->height = e->v_map.win_y + 1;
 	e->img->ptr = mlx_new_image(e->mlx, e->img->width, e->img->height);

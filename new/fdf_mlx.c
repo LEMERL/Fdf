@@ -6,7 +6,7 @@
 /*   By: mgrimald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/11 21:43:38 by mgrimald          #+#    #+#             */
-/*   Updated: 2015/06/11 21:43:42 by mgrimald         ###   ########.fr       */
+/*   Updated: 2015/06/12 11:05:37 by mgrimald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,10 @@ void	key_hook3(t_env *e, int keycode)
 		e->v_map.underground = 0;
 	else if (keycode == KEY_8)
 		e->v_map.underground = 1;
-	set_color(e, e->v_map.high, e->v_map.ground, e->v_map.underground);
+	if (keycode == KEY_I)
+		set_color(e, rand() % 3, rand() % 3, rand() % 2);
+	else
+		set_color(e, e->v_map.high, e->v_map.ground, e->v_map.underground);
 }
 
 void	key_hook2(t_env *e, int keycode)
@@ -64,7 +67,7 @@ int		key_hook(int keycode, t_env *e)
 		ft_double_tab_del((void**)e->mapping);
 		mlx_destroy_image(e->mlx, e->img->ptr);
 		mlx_destroy_window(e->mlx, e->win);
-		exit(0);
+		ft_wait_exit(0);
 	}
 	if (keycode == NUM_PAD_PLUS || keycode == KEY_PLUS)
 		e->v_map.ecart += 1;

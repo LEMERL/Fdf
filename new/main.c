@@ -6,7 +6,7 @@
 /*   By: mgrimald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/27 17:45:22 by mgrimald          #+#    #+#             */
-/*   Updated: 2015/06/11 21:45:04 by mgrimald         ###   ########.fr       */
+/*   Updated: 2015/06/12 09:35:08 by mgrimald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,30 +91,34 @@ void		*initialise_stuct(t_env *e, int argc, const char **argv)
 	return (e);
 }
 
-int			main(int argc, const char **argv)
+void		start(int argc, const char **argv)
 {
-	t_env	e;
+	t_env	*e;
 	int		x;
 	int		y;
 
-	if (initialise_stuct(&e, argc, argv) == NULL)
-		return (-1);
-	x = e.v_map.win_x;
-	y = e.v_map.win_y;
-	if ((e.win = mlx_new_window(e.mlx, x, y, "fdf")) == NULL)
-		return (-1);
-	ft_restart(&e);
-	return (0);
+	e = (t_env*)ft_strnew(sizeof(t_env));
+	if (e == NULL)
+	{
+		ft_putendl_fd("Malloc error", 2);
+		ft_wait_exit(-1);
+	}
+	if (initialise_stuct(e, argc, argv) == NULL)
+		ft_wait_exit(-1);
+	x = e->v_map.win_x;
+	y = e->v_map.win_y;
+	if ((e->win = mlx_new_window(e->mlx, x, y, "fdf")) == NULL)
+		ft_wait_exit(-1);
+	ft_restart(e);
 }
 
-int			ft_restart(t_env *e)
+int			main(int argc, const char **argv)
 {
-	new_img(e);
-	fdf_calcul_proj(e->mapping, e);
-	fdf_trace(e->mapping, e);
-	mlx_clear_window(e->mlx, e->win);
-	mlx_put_image_to_window(e->mlx, e->win, e->img->ptr, 1, 1);
-	fdf_mlx(e);
-	(void)e;
-	return (1);
+	if (argc < 2)
+		ft_putendl_fd("Map error : I need a map", 2);
+	else if (argc <= 2)
+		start(argc, argv);
+	else
+		gestion_multi(argc, argv);
+	return (0);
 }

@@ -34,7 +34,7 @@ int				fdf_trace_one(t_fdf **s, t_env *env)
 		else
 		{
 			ft_putendl_fd("ERROR: Empty map", 2);
-			exit(1);
+			ft_wait_exit(1);
 		}
 		return (0);
 	}

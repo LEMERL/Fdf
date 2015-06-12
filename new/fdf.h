@@ -6,7 +6,7 @@
 /*   By: mgrimald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/11 21:43:08 by mgrimald          #+#    #+#             */
-/*   Updated: 2015/06/11 22:05:52 by mgrimald         ###   ########.fr       */
+/*   Updated: 2015/06/12 09:37:35 by mgrimald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,9 @@ typedef struct		s_env
 	int				proj_type;
 }					t_env;
 
+void				start(int argc, const char **argv);
+void				ft_wait_exit(int n);
+void				gestion_multi(int argc, const char **argv);
 void				set_color(t_env *e, int high, int ground, int underground);
 t_env				*fdf_strc_ini(t_env *e, int argc, const char **argv);
 int					ft_restart(t_env *e);

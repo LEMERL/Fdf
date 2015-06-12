@@ -6,7 +6,7 @@
 /*   By: mgrimald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/11 21:44:34 by mgrimald          #+#    #+#             */
-/*   Updated: 2015/06/11 21:44:36 by mgrimald         ###   ########.fr       */
+/*   Updated: 2015/06/12 09:36:20 by mgrimald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,25 +24,20 @@ t_fdf		**fdf_mapping(int argc, const char *argv[])
 	t_fdf	**s;
 
 	fd = 0;
-	if (argc != 2)
-	{
-		ft_putendl_fd("Map error : Only one map at a time", 2);
-		exit(0);
-	}
-	if ((fd = open(argv[1], O_RDONLY)) < 0)
+	if ((fd = open(argv[argc - 1], O_RDONLY)) < 0)
 	{
 		ft_putendl_fd("Map error : Cannot read or find map", 2);
-		exit(0);
+		ft_wait_exit(0);
 	}
 	if ((s = get_map(fd, 0)) == NULL)
 	{
 		ft_putendl_fd("Error : Program abort", 2);
-		exit(0);
+		ft_wait_exit(0);
 	}
 	if (s == NULL || *s == NULL)
 	{
 		ft_putendl_fd("Error : Empty map", 2);
-		exit(0);
+		ft_wait_exit(0);
 	}
 	return (s);
 }
