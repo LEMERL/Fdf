@@ -6,7 +6,7 @@
 /*   By: mgrimald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/11 21:43:47 by mgrimald          #+#    #+#             */
-/*   Updated: 2015/06/11 21:43:48 by mgrimald         ###   ########.fr       */
+/*   Updated: 2015/06/12 12:05:53 by mgrimald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ void	fdf_calcul_proj(t_fdf **s, t_env *env)
 		while (s[++i] && ((j = -1) + 2))
 			while (s[i][++j].x >= 0)
 				ft_proj_cal(s[i] + j, env);
-		env->v_map.img_x = 0;
-		env->v_map.img_y = 0;
 		env->v_map.ecart = 20;
 	}
 	if (env->v_map.ecart >= 100)

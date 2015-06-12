@@ -6,7 +6,7 @@
 /*   By: mgrimald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/11 21:43:08 by mgrimald          #+#    #+#             */
-/*   Updated: 2015/06/12 09:37:35 by mgrimald         ###   ########.fr       */
+/*   Updated: 2015/06/12 12:21:30 by mgrimald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 # define FDF_H
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
 # include <string.h>
-# include <math.h>
 # include <mlx.h>
 # include "libft/includes/libft.h"
 

@@ -6,7 +6,7 @@
 /*   By: mgrimald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/11 21:44:25 by mgrimald          #+#    #+#             */
-/*   Updated: 2015/06/11 21:44:29 by mgrimald         ###   ########.fr       */
+/*   Updated: 2015/06/12 12:23:56 by mgrimald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,7 @@ static void		fill_struct(int y, int x, char *prev_z, t_fdf *res)
 		prev_z++;
 	str.color = -1;
 	if (*prev_z == ',')
-	{
 		str.color = ft_hexatodeci(prev_z + 1);
-		ft_putnbr(str.color);
-		ft_putendl("");
-	}
 	str.print_x = 0;
 	str.print_y = 0;
 	*res = str;

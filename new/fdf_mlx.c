@@ -6,7 +6,7 @@
 /*   By: mgrimald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/06/11 21:43:38 by mgrimald          #+#    #+#             */
-/*   Updated: 2015/06/12 11:05:37 by mgrimald         ###   ########.fr       */
+/*   Updated: 2015/06/12 12:17:39 by mgrimald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ void	key_hook3(t_env *e, int keycode)
 		e->v_map.underground = 0;
 	else if (keycode == KEY_8)
 		e->v_map.underground = 1;
-	if (keycode == KEY_I)
+	if (keycode == KEY_M)
 		set_color(e, rand() % 3, rand() % 3, rand() % 2);
 	else
 		set_color(e, e->v_map.high, e->v_map.ground, e->v_map.underground);
@@ -93,7 +93,7 @@ int		expose_hook(t_env *e)
 
 t_env	fdf_mlx(t_env *env)
 {
-	mlx_key_hook(env->win, key_hook, env);
+	mlx_hook(env->win, KEYPRESS, PRESSMASK, key_hook, env);
 	mlx_loop(env->mlx);
 	mlx_expose_hook(env->win, expose_hook, env);
 	return (*env);

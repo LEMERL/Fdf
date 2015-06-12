@@ -6,7 +6,7 @@
 /*   By: mgrimald <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/05/27 17:45:22 by mgrimald          #+#    #+#             */
-/*   Updated: 2015/06/12 09:35:08 by mgrimald         ###   ########.fr       */
+/*   Updated: 2015/06/12 12:15:02 by mgrimald         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void		set_color(t_env *e, int high, int ground, int underground)
 {
 	e->var_color.col_high.color = 0x00FFf0;
 	e->var_color.col_ground_high.color = 0x006630;
-	if (high == 1)
+	if ((e->v_map.high = high) + 1 && (high == 1))
 	{
 		e->var_color.col_high.color = 0xA11A1A;
 		e->var_color.col_ground_high.color = 0x943C3C;
@@ -51,13 +51,13 @@ void		set_color(t_env *e, int high, int ground, int underground)
 		e->var_color.col_ground_high.color = 0x903080;
 	}
 	e->var_color.col_ground.color = 0xFFFF00;
-	if (ground == 1)
+	if ((e->v_map.ground = ground) + 1 && (ground == 1))
 		e->var_color.col_ground.color = 0xC7C5C5;
 	else if (ground == 2)
 		e->var_color.col_ground.color = 0xFF00FF;
 	e->var_color.col_ground_underground.color = 0xe08e66;
 	e->var_color.col_underground.color = 0xf44681;
-	if (underground == 1)
+	if ((e->v_map.underground = underground) + 1 && (underground == 1))
 	{
 		e->var_color.col_ground_underground.color = 0x6ba6ea;
 		e->var_color.col_underground.color = 0x1076e9;
@@ -83,7 +83,8 @@ void		*initialise_stuct(t_env *e, int argc, const char **argv)
 	e->proj_type = 0;
 	e->v_map.win_x = 1000;
 	e->v_map.win_y = 1000;
-	e->v_map.img_x = 500;
+	e->v_map.img_x = 250;
+	e->v_map.img_y = 100;
 	e->v_map.ecart = -42;
 	e->v_map.cp = 74;
 	e->v_map.cp_2 = 74;
